@@ -177,7 +177,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .mapwrap svg:active{cursor:grabbing}
 .country{vector-effect:non-scaling-stroke}
 #view-songs{display:flex;flex-direction:column;gap:14px}
-#view-sig[hidden]{display:none!important}
+#view-sig[hidden],#view-main[hidden]{display:none!important}
 .sigs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
 .sig{display:grid;grid-template-columns:110px minmax(0,1fr) minmax(0,1.3fr);gap:6px 24px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
 @media (max-width:700px){.sig{grid-template-columns:minmax(0,1fr)}}
@@ -1553,16 +1553,17 @@ function showView(v,scroll){
   if(v==="songs")renderAlbums();if(v==="sig")renderSig();if(v==="cmp")renderCmp();if(v==="ana")renderAna();
   if(v==="main"){drawTimeline();const w=document.getElementById("map").parentElement.clientWidth;if(w&&Math.abs(w-lastW)>=2){lastW=w;sizeMap();drawMap()}}
   $("#abar").hidden=v!=="ana";setTabH();
-  if(scroll)document.querySelector(".stickybar").scrollIntoView({block:"start"});
+  if(scroll){const y=Math.round(document.querySelector("header").getBoundingClientRect().bottom+window.scrollY);window.scrollTo({top:y,left:0,behavior:"instant"})}
 }
 let anaLock=0;
+let anaTimers=[];
 function goAna(id){const el=document.getElementById(id);if(!el)return;
-  anaLock=Date.now()+900;markAna(id);
-  const go=()=>{setTabH();const off=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--tabh"))||56)+12;const y=el.getBoundingClientRect().top+window.scrollY-off;if(Math.abs(window.scrollY-y)>2)window.scrollTo(0,Math.max(0,y))};
-  go();[80,250,600].forEach(ms=>setTimeout(go,ms))}
+  anaLock=Date.now()+1600;markAna(id);anaTimers.forEach(clearTimeout);
+  const go=()=>{setTabH();const off=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--tabh"))||56)+12;const y=Math.max(0,Math.round(el.getBoundingClientRect().top+window.scrollY-off));if(Math.abs(window.scrollY-y)>2){window.scrollTo({top:y,left:0,behavior:"instant"});const se=document.scrollingElement||document.documentElement;if(Math.abs(window.scrollY-y)>2)se.scrollTop=y}};
+  go();anaTimers=[60,200,450,800,1300].map(ms=>setTimeout(go,ms))}
 function markAna(id){document.querySelectorAll(".abar .anav a").forEach(a=>a.setAttribute("aria-current",a.getAttribute("href")==="#"+id));const sel=$("#anaSel");if(sel&&sel.value!==id)sel.value=id}
 document.querySelectorAll(".abar .anav a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();goAna(a.getAttribute("href").slice(1))}));
-$("#anaSel").addEventListener("change",e=>goAna(e.target.value));
+$("#anaSel").addEventListener("change",e=>{const v=e.target.value;e.target.blur();requestAnimationFrame(()=>goAna(v))});
 if("IntersectionObserver" in window){const io=new IntersectionObserver(es=>{if($("#view-ana").hidden||Date.now()<anaLock)return;const vis=es.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);if(vis.length)markAna(vis[0].target.id)},{rootMargin:"-30% 0px -60% 0px"});document.querySelectorAll(".anasec[id]").forEach(el=>io.observe(el))}
 document.querySelectorAll(".ptabs button").forEach(b=>b.onclick=()=>showView(b.dataset.v,true));
 function routeHash(){
