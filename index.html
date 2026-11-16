@@ -1990,17 +1990,25 @@ function makeQ(type,prev){
     return {type,song:e,ans:String(y),opts:[0,1,2,3].map(d=>String(lo+d)),info:`${fmt(e.first)} ${e.fs.tour.name}・${CN(e.fs.city)}`};
   }
   if(type==="tour"){
-    const t=rnd(pastTours()),show=rnd(pastShows(t)),tc=tourCounts();
-    const seq=showSeq(t,show.date,show.city).filter(o=>isOwn(o.k));
-    let cand=L>=2?seq.filter(o=>(tc.get(o.k)||{size:1}).size>=2):seq.slice().sort((a,b)=>(tc.get(a.k)||{size:9}).size-(tc.get(b.k)||{size:9}).size).slice(0,8);
-    if(cand.length<4)cand=seq;
-    const songs=shuffle(cand).slice(0,L>=3?3:4);
-    return {type,songs,ans:t.id,opts:shuffle([t,...nearTours(t,3)]).map(x=>x.id),info:`${fmt(show.date)} ${CN(show.city)}`};
+    /* a wrong option must not have sung every song shown, or the question has two right answers */
+    const tc=tourCounts(),sungBy=k=>tc.get(k)||new Set();
+    for(let tries=0;tries<60;tries++){
+      const t=rnd(pastTours()),show=rnd(pastShows(t));
+      const seq=showSeq(t,show.date,show.city).filter(o=>isOwn(o.k));if(seq.length<3)continue;
+      let cand=L>=2?seq.filter(o=>sungBy(o.k).size>=2):seq.slice().sort((a,b)=>sungBy(a.k).size-sungBy(b.k).size).slice(0,8);
+      if(cand.length<4)cand=seq;
+      const songs=shuffle(cand).slice(0,L>=3?3:4);
+      const fits=x=>songs.every(o=>sungBy(o.k).has(x.id));
+      const wrong=nearTours(t,99).filter(x=>!fits(x)).slice(0,3);
+      if(wrong.length<3)continue;
+      return {type,songs,ans:t.id,opts:shuffle([t,...wrong]).map(x=>x.id),info:`${fmt(show.date)} ${CN(show.city)}`};
+    }
+    return makeQ("yr",prev);
   }
   if(type==="open"){
     let t,show,seq,tries=0;do{t=rnd(pastTours());show=pastShows(t)[0];seq=showSeq(t,show.date,show.city).filter(o=>o.ph==="main");tries++}while(tries<30&&!isOwn(seq[0].k));
     const first=seq[0];const rest=seq.slice(1).filter(o=>isOwn(o.k));
-    const pool=L>=2?rest.slice(0,5):rest;const wrong=shuffle(pool.filter(o=>o.k!==first.k)).slice(0,3);
+    const pool=L>=2?rest.slice(0,5):rest;const wrong=shuffle([...new Map(pool.filter(o=>o.k!==first.k).map(o=>[o.k,o])).values()]).slice(0,3);
     return {type,tour:t,show,ans:first.k,opts:shuffle([first,...wrong]).map(o=>o.k),lab:Object.fromEntries([first,...wrong].map(o=>[o.k,o.t])),info:`${fmt(show.date)} ${CN(show.city)}`};
   }
   /* city: which city did this tour NOT visit */
