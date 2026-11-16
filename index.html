@@ -8,7 +8,7 @@
 <meta property="og:title" content="Red Velvet Concert Archive">
 <meta property="og:description" content="Red Velvet concerts, tour cities, setlists and analysis, 2017–2026.">
 <script data-goatcounter="https://rvconcerts.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Chiron+GoRound+TC:wght@400..800&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: programme booklet — header + filters, world map with city panel, tour index, one section per tour (dates + setlist tabs), city index */
 :root{
@@ -16,10 +16,10 @@
   --red:#b3122e; --velvet:#5a1a3a; --red-soft:#f7e3e7; --velvet-soft:#efe4ec; --cancel:#9a8b91;
   --land:#ece3e7; --land-on:#e8b9c4; --sea:#f6f1f3;
   --c-rv:#ffa38b; --c-irene:#f27fae; --c-seulgi:#f2bd1d; --c-wendy:#3d8fdc; --c-joy:#3fae5a; --c-yeri:#9b6fd0;
-  --display:"Bodoni Moda","Noto Serif TC",Georgia,serif;
-  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --display:"Bricolage Grotesque","Chiron GoRound TC","Noto Sans TC",system-ui,sans-serif;
+  --body:"Chiron GoRound TC","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  --head:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --head:"Bricolage Grotesque","Chiron GoRound TC","Noto Sans TC","PingFang TC",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#140c10; --surface:#1d1318; --ink:#f3e9ed; --muted:#b39ca6; --line:#35252d;
@@ -164,7 +164,7 @@ ol.sl .x{font-size:12px;color:var(--muted)}
 .ptabs .ls{display:none}
 body{overflow-x:clip}
 @media (max-width:640px){
-  .ptabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible;touch-action:manipulation;border-bottom-width:2px;padding-block:4px;gap:4px}
+  .ptabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));overflow:visible;touch-action:manipulation;border-bottom-width:2px;padding-block:4px;gap:4px}
   .ptabs button{flex:initial;padding:9px 4px;font-size:14px;text-align:center;border-bottom:none;margin:0;border-radius:6px}
   .ptabs button[aria-selected="true"]{background:var(--red-soft);color:var(--ink)}
   .ptabs .lf{display:none}
@@ -481,6 +481,149 @@ details.mdesc>summary{display:none}
 .totop.on{opacity:1;pointer-events:auto;transform:none}
 .totop:hover{border-color:var(--red);color:var(--red)}
 .cmore{font:inherit;font-size:13px;align-self:flex-start;padding:5px 12px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);cursor:pointer}
+#view-play[hidden],.fbar[hidden],.otd[hidden],.mplab[hidden]{display:none!important}
+.mestats{display:flex;flex-wrap:wrap;gap:10px 28px}
+.mestats div b{display:block;font-family:var(--head);font-weight:700;font-size:34px;line-height:1;font-variant-numeric:tabular-nums;color:var(--red)}
+.mestats div span{font-size:12.5px;color:var(--muted)}
+.meact{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.mepick{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+.mepick details{border-bottom:1px solid var(--line)}
+.mepick details:last-child{border-bottom:none}
+.mepick summary{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 14px;cursor:pointer;list-style:none}
+.mepick summary::-webkit-details-marker{display:none}
+.mepick summary .sw{width:10px;height:28px;border-radius:3px}
+.mepick summary b{font-weight:700;display:block;line-height:1.2}
+.mepick summary small{font-size:12px;color:var(--muted)}
+.mepick summary .cnt{font-family:var(--mono);font-size:12.5px;color:var(--muted);white-space:nowrap}
+.mepick summary .cnt.on{color:var(--red);font-weight:500}
+.mepick summary .cnt::after{content:" ▾"}
+.mepick details[open] summary .cnt::after{content:" ▴"}
+.mepick ul{list-style:none;margin:0;padding:0 14px 10px}
+.mepick li label{display:grid;grid-template-columns:22px auto minmax(0,1fr);gap:4px 10px;align-items:center;padding:8px 0;border-top:1px dotted var(--line);cursor:pointer;font-size:13.5px;min-height:28px}
+.mepick li input{width:18px;height:18px;accent-color:var(--red);margin:0}
+.mepick li .d{font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+.mepick li .v{color:var(--muted);font-size:12.5px;overflow-wrap:anywhere}
+.mepick li.fut label{cursor:default;opacity:.5}
+.mepick .all{font:inherit;font-size:12px;margin:6px 0 2px;padding:3px 9px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--muted);cursor:pointer}
+.meres{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.mecard{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.mecard img{width:min(360px,100%);height:auto;border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.game{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:14px;align-items:stretch}
+@media (max-width:640px){.game{grid-template-columns:minmax(0,1fr)}.game .vs{justify-self:center}}
+.gcard{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:18px;display:flex;flex-direction:column;gap:8px;min-height:190px;justify-content:center;text-align:center;position:relative;overflow:hidden;transition:border-color .2s,background-color .2s}
+.gcard .gs{font-family:var(--head);font-weight:700;font-size:clamp(22px,4vw,30px);line-height:1.15;overflow-wrap:anywhere}
+.gcard .gm{font-size:12.5px;color:var(--muted)}
+.gcard .gn{font-family:var(--head);font-weight:700;font-size:44px;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
+.gcard .gn small{font-size:15px;color:var(--muted);font-weight:500;margin-left:4px}
+.gcard.ok{border-color:#2f9e5b;background:color-mix(in srgb,#2f9e5b 10%,var(--surface))}
+.gcard.ng{border-color:var(--red);background:var(--red-soft)}
+.gbtns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.gbtns button{font:inherit;font-size:15px;font-weight:500;padding:10px 18px;min-width:120px;border-radius:999px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
+.gbtns button.lo{background:var(--surface);color:var(--ink)}
+.gbtns button:disabled{opacity:.4;cursor:default}
+.game .vs{align-self:center;font-family:var(--display);font-style:italic;font-size:22px;color:var(--muted)}
+.gscore{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13.5px;color:var(--muted)}
+.gscore b{font-family:var(--head);font-size:22px;color:var(--ink);margin-right:4px;font-variant-numeric:tabular-nums}
+.gover{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center}
+.gover .big{font-family:var(--head);font-weight:700;font-size:52px;line-height:1;color:var(--red)}
+@media (prefers-reduced-motion:no-preference){.gcard.pop{animation:gpop .35s ease}@keyframes gpop{0%{transform:scale(.97)}60%{transform:scale(1.02)}100%{transform:none}}}
+@media (max-width:640px){.ptabs button{font-size:13px;padding:9px 1px;overflow:hidden;text-overflow:ellipsis}html[lang="en"] .ptabs button{font-size:12px;letter-spacing:-.02em}.ptabs{gap:2px!important}.gcard{min-height:150px;padding:14px}.gcard .gn{font-size:36px}}
+.mapwrap #mplay{margin-left:6px}
+.mapwrap #mplay[aria-pressed="true"]{border-color:var(--red);color:var(--red);background:var(--red-soft)}
+.mplab{position:absolute;left:12px;bottom:12px;z-index:2;display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:8px;background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);pointer-events:none;max-width:calc(100% - 24px)}
+.mplab b{font-family:var(--head);font-size:30px;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
+.mplab span{font-size:13px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mplab small{font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (max-width:640px){.mplab{padding:6px 10px}.mplab b{font-size:22px}.mplab span{font-size:12px}}
+@media (prefers-reduced-motion:no-preference){.pin.born circle.core,.pin.born circle.halo{animation:pinpop .5s ease-out}@keyframes pinpop{0%{opacity:0;stroke-width:8}60%{opacity:1}}}
+.otd{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding:10px 16px;border-radius:6px;border:1px dashed var(--line);font-size:13.5px;background:var(--surface)}
+.otd .lbl{font-size:12.5px;letter-spacing:.12em;color:var(--velvet);font-weight:500}
+.otd .otdl{display:flex;flex-direction:column;gap:2px;min-width:0}
+.otd a{color:var(--ink);text-decoration:none}
+.otd a:hover{color:var(--red)}
+.otd a b{color:var(--velvet);margin-right:4px}
+.qz{min-height:0;gap:10px}
+.qsongs{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.qsongs li{padding:4px 10px;border-radius:999px;background:var(--red-soft);font-weight:500;font-size:14.5px}
+.qopts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.qo{font:inherit;font-size:15px;padding:12px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:flex;flex-direction:column;gap:2px;align-items:center;text-align:center;min-height:52px;justify-content:center;transition:border-color .2s,background-color .2s}
+.qo:hover:not(:disabled){border-color:var(--red)}
+.qo small{font-size:12px;color:var(--muted)}
+.qo.ok{border-color:#2f9e5b;background:color-mix(in srgb,#2f9e5b 14%,var(--surface))}
+.qo.ng{border-color:var(--red);background:var(--red-soft)}
+.qo:disabled{cursor:default}
+.qo:disabled:not(.ok):not(.ng){opacity:.55}
+/* accent follows the lineup filter */
+h1 .ca::after{background:linear-gradient(90deg,var(--accent,var(--c-rv)) 0 50%,var(--accent2,var(--accent,var(--c-rv))) 50% 100%);transition:background .3s}
+.ptabs{border-bottom-color:var(--accent,var(--ink));transition:border-color .3s}
+.ptabs button[aria-selected="true"]{border-bottom-color:var(--accent,var(--red))}
+@media (prefers-reduced-motion:no-preference){
+  .fx{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+  .fx.in{opacity:1;transform:none}
+  .chips button,.btn,.qo,.gbtns button{transition:transform .12s ease,background-color .2s,border-color .2s,color .2s}
+  .chips button:active,.btn:active,.qo:active:not(:disabled),.gbtns button:active{transform:scale(.96)}
+  .idx{transition:border-color .15s,transform .15s}.idx:hover{transform:translateY(-2px)}
+}
+/* ===== livelier look ===== */
+:root{--rainbow:linear-gradient(90deg,var(--c-rv) 0 20%,var(--c-irene) 20% 40%,var(--c-seulgi) 40% 60%,var(--c-wendy) 60% 80%,var(--c-joy) 80% 100%);--r:14px;--shadow:0 1px 2px rgba(60,20,40,.06),0 10px 28px -14px rgba(90,26,58,.28)}
+body{background:radial-gradient(760px 420px at 0% -6%,color-mix(in srgb,var(--c-rv) 26%,transparent),transparent 70%),radial-gradient(620px 380px at 100% 2%,color-mix(in srgb,var(--c-irene) 18%,transparent),transparent 70%),radial-gradient(520px 320px at 55% -4%,color-mix(in srgb,var(--c-seulgi) 14%,transparent),transparent 70%),var(--bg);background-repeat:no-repeat;letter-spacing:.01em}
+h1{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.92}
+h1 .r{color:var(--red)}
+h1 .v{font-style:normal;font-weight:800;color:var(--velvet)}
+h1 .ca{font-weight:600;letter-spacing:-.03em;font-size:.78em;display:inline-block;margin-top:.12em}
+h1 .ca::after{background:var(--accentbar,var(--rainbow));width:3.2em;height:7px;border-radius:99px}
+.kicker{letter-spacing:.2em}
+h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.025em}
+h2.sec::after{content:"";display:inline-block;width:.32em;height:.32em;border-radius:50%;background:var(--accent,var(--red));margin-left:.12em;vertical-align:.02em}
+.stat b{font-family:var(--display);font-weight:800;letter-spacing:-.03em}
+.stat{position:relative}
+.stat:nth-child(1) b{color:var(--red)}.stat:nth-child(2) b{color:var(--velvet)}.stat:nth-child(3) b{color:color-mix(in srgb,var(--c-wendy) 80%,var(--ink))}.stat:nth-child(4) b{color:color-mix(in srgb,var(--c-joy) 75%,var(--ink))}
+.next{border-radius:var(--r);background:linear-gradient(120deg,var(--red-soft),color-mix(in srgb,var(--c-irene) 16%,var(--surface)));box-shadow:var(--shadow)}
+.next b.cd{font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+.otd{border-radius:var(--r);border-style:solid;background:linear-gradient(120deg,var(--surface),color-mix(in srgb,var(--c-seulgi) 12%,var(--surface)))}
+.ptabs{border-bottom-width:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding-block:6px;gap:4px;box-shadow:inset 0 -2px 0 var(--accent,var(--ink))}
+.ptabs button{border-radius:999px;border-bottom:none;margin-bottom:0;padding:9px 16px;transition:background-color .2s,color .2s}
+.ptabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.ptabs button:hover:not([aria-selected="true"]){background:var(--red-soft);color:var(--ink)}
+.stickybar{background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.chips button{border-radius:999px;padding:6px 14px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chips button:hover:not([aria-pressed="true"]){border-color:var(--red);color:var(--red)}
+.btn,.xall button{border-radius:999px;padding:7px 16px}
+.btn.pri{background:linear-gradient(120deg,var(--red),color-mix(in srgb,var(--red) 60%,var(--c-irene)));border:none;box-shadow:0 6px 16px -8px var(--red)}
+.mapbox,.tlwrap,.idx,.alb,.rk,.kvc,.pick,.mepick,.gcard,.gover,.qo,.dbwrap,.mxwrap{border-radius:var(--r)}
+.mapbox,.tlwrap,.idx,.alb,.rk,.kvc,.pick,.mepick,.gcard,.gover,.dbwrap{box-shadow:var(--shadow);border-color:color-mix(in srgb,var(--line) 70%,transparent)}
+.idx .nm{font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+.idx{background-size:100% 6px;padding-top:16px}
+.thbtn h2{font-family:var(--display);font-weight:800;letter-spacing:-.03em}
+section.tour::before{height:6px;border-radius:99px}
+.thbtn .sw{border-radius:99px}
+.tag{border-radius:999px}
+.tabs button{border-radius:999px;padding:4px 12px}
+.maptools button{border-radius:999px;padding:4px 12px}
+ol.sl li.song::before{color:var(--red);font-weight:500}
+ol.sl li.seg{font-family:var(--display);font-weight:800;letter-spacing:.06em}
+.sig .song b,.alb .an,.dwh h3,.kvc b.h{font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+.gcard .gs,.gover .big,.gcard .gn,.mestats div b,.gscore b,.mplab b{font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+.mestats div:nth-child(2) b{color:var(--velvet)}.mestats div:nth-child(3) b{color:color-mix(in srgb,var(--c-wendy) 80%,var(--ink))}.mestats div:nth-child(4) b{color:color-mix(in srgb,var(--c-joy) 75%,var(--ink))}.mestats div:nth-child(5) b{color:color-mix(in srgb,var(--c-seulgi) 70%,var(--ink))}
+.gcard.qz{background:linear-gradient(140deg,var(--surface),color-mix(in srgb,var(--c-irene) 10%,var(--surface)))}
+.qsongs li{background:var(--surface);border:1.5px solid color-mix(in srgb,var(--red) 35%,var(--line))}
+.qsongs li:nth-child(5n+1){border-color:var(--c-rv)}.qsongs li:nth-child(5n+2){border-color:var(--c-irene)}.qsongs li:nth-child(5n+3){border-color:var(--c-seulgi)}.qsongs li:nth-child(5n+4){border-color:var(--c-wendy)}
+.glv{font-size:12px;font-weight:700;letter-spacing:.08em;padding:3px 10px;border-radius:999px;align-self:center;color:#fff}
+.glv.lv0{background:color-mix(in srgb,var(--c-joy) 80%,#000)}.glv.lv1{background:color-mix(in srgb,var(--c-wendy) 85%,#000)}.glv.lv2{background:color-mix(in srgb,var(--c-irene) 75%,#000)}.glv.lv3{background:var(--red)}
+.gtype{font-size:12.5px;align-self:center;padding:3px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:var(--surface)}
+.gmodes{gap:6px}
+@media (prefers-reduced-motion:no-preference){
+  .glv{animation:gl .4s ease}@keyframes gl{from{transform:scale(.7);opacity:0}}
+  h1 .ca::after{background-size:200% 100%;animation:rb 1.2s ease-out}@keyframes rb{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  .mapbox,.tlwrap,.alb,.rk,.kvc,.gcard{transition:transform .2s ease,box-shadow .2s ease}
+  .alb:hover,.rk:hover,.kvc:hover{transform:translateY(-2px)}
+}
+@media (max-width:640px){
+  .ptabs button{padding:8px 2px;border-radius:10px}
+  h1{font-size:clamp(40px,12vw,54px)}
+  .stat b{font-size:26px}
+}
 footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;max-width:76ch}
 @media (prefers-reduced-motion:no-preference){.idx{transition:border-color .15s}}
 </style>
@@ -495,15 +638,17 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
   <details class="about"><summary>關於這個頁面</summary><p class="lede" style="margin-top:8px">收錄 Red Velvet 全員的單獨演唱會與 Fan-Con、Irene &amp; Seulgi 小分隊巡演，以及成員個人演唱會與見面會巡演。Setlist 以나무위키為主、Wikipedia 與現場紀錄補充；地圖上點城市可以看到哪一年、哪個巡演在那裡開過。</p></details>
   <div class="statrow"><div class="stats" id="stats"></div><div class="adon" id="adon" role="img" aria-label="各陣容場次比例"></div></div>
   <div class="next" id="next" hidden></div>
+  <div class="otd" id="otd" hidden></div>
 </header>
 
 <div class="stickybar">
 <nav class="ptabs" role="tablist" aria-label="頁面">
-  <button type="button" role="tab" data-v="main" aria-selected="true"><span class="lf">巡演・地圖・Setlist</span><span class="ls">巡演地圖</span></button>
+  <button type="button" role="tab" data-v="main" aria-selected="true"><span class="lf">巡演・地圖・Setlist</span><span class="ls">巡演</span></button>
   <button type="button" role="tab" data-v="songs" aria-selected="false"><span class="lf">收錄曲演出統計</span><span class="ls">收錄曲</span></button>
   <button type="button" role="tab" data-v="sig" aria-selected="false"><span class="lf">開場信號曲</span><span class="ls">信號曲</span></button>
   <button type="button" role="tab" data-v="cmp" aria-selected="false"><span class="lf">Setlist 對照</span><span class="ls">對照</span></button>
   <button type="button" role="tab" data-v="ana" aria-selected="false"><span class="lf">分析</span><span class="ls">分析</span></button>
+  <button type="button" role="tab" data-v="play" aria-selected="false"><span class="lf">我的足跡・小遊戲</span><span class="ls">互動</span></button>
 </nav>
 <div class="fbar"><span class="fl">陣容</span><div class="chips" id="who" role="group" aria-label="依陣容篩選（團體、小分隊、成員）"></div><label class="wsel"><span class="sr">依陣容篩選</span><select id="whoSel"></select></label></div>
 <div class="abar" id="abar" hidden><nav class="anav" aria-label="分析目錄"><a href="#a-gene">巡演基因圖</a><a href="#a-pos">開場・壓軸・安可</a><a href="#a-title">主打 vs 收錄曲</a><a href="#a-era">時代分布</a><a href="#a-len">每場曲數</a><a href="#a-debut">舞台首唱</a><a href="#a-late">遲來首唱</a><a href="#a-kr">韓國 vs 海外</a><a href="#a-city">城市回訪</a><a href="#a-solo">成員 Solo 舞台</a><a href="#a-carry">帶到個人舞台</a><a href="#a-pair">固定搭檔</a><a href="#a-rev">復活紀錄</a></nav><label class="asel"><span class="fl">跳到</span><select id="anaSel" aria-label="跳到分析區塊"><option value="a-gene">巡演基因圖</option><option value="a-pos">開場・壓軸・安可</option><option value="a-title">主打 vs 收錄曲</option><option value="a-era">時代分布</option><option value="a-len">每場曲數</option><option value="a-debut">舞台首唱</option><option value="a-late">遲來首唱</option><option value="a-kr">韓國 vs 海外</option><option value="a-city">城市回訪</option><option value="a-solo">成員 Solo 舞台</option><option value="a-carry">帶到個人舞台</option><option value="a-pair">固定搭檔</option><option value="a-rev">復活紀錄</option></select></label></div>
@@ -524,8 +669,10 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
         <button type="button" data-r="japan" aria-pressed="false">日本</button>
         <button type="button" data-r="na" aria-pressed="false">北美</button>
         <button type="button" data-r="eu" aria-pressed="false">歐洲</button>
+        <button type="button" id="mplay" aria-pressed="false">▶ 播放</button>
         <span class="zbtns"><button type="button" id="zin" aria-label="放大">＋</button><button type="button" id="zout" aria-label="縮小">－</button><button type="button" id="zreset">重設</button></span>
       </div>
+      <div class="mplab" id="mplab" aria-live="polite" hidden></div>
       <svg id="map" viewBox="0 0 960 540" role="img" aria-label="Red Velvet 巡演城市世界地圖"></svg>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
@@ -645,6 +792,10 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
 
 <div class="drawer" id="drawer" hidden><div class="dwin" role="dialog" aria-modal="true" aria-labelledby="dwh"><div class="dwh"><h3 id="dwh"></h3><button type="button" class="btn" id="dwx">關閉</button></div><div id="dwbody"></div></div></div>
 
+<div id="view-play" hidden>
+<section class="anasec" id="p-me" aria-labelledby="meh" style="display:flex;flex-direction:column;gap:14px"></section>
+<section class="anasec" id="p-game" aria-labelledby="gmh" style="display:flex;flex-direction:column;gap:14px;margin-top:44px"></section>
+</div>
 <footer>
   <div>最後更新：2026 年 11 月 11 日。城市以都會區為單位：日本依都道府縣歸到主要城市（例如堺併入大阪、福山併入廣島、一宮併入名古屋），美國依大都會區（紐華克併入紐約），新北併入台北；場館欄註明實際所在地。Setlist 為代表場次，不同城市、日期可能有差異；括號為版本或備註。只收單獨演唱會、Fan-Con 與成員個人巡演，未收 SMTOWN、音樂節、頒獎典禮與單場生日會。Wendy 2025 年在重慶、杭州的特別見面會及 Joy 2025/11/29 上海見面會未列入。Seulgi、Yeri 目前查無個人演唱會。</div>
   <div>來源：나무위키（Red Room、REDMARE、La Rouge、BALANCE、blank、I-WILL、W:EALIVE、Unmelting Our Green、A Day in Red &amp; Velvet）、Wikipedia、setlist.fm、The Seoul Story、Malay Mail、NOWnews。</div>
@@ -776,10 +927,10 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const fmt=d=>d.replace(/-/g,".");
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const shows=t=>t.dates.filter(r=>r[0]!=="L"&&r[0]!=="X");
-let filter="all", region="world", selected=null, country=null, ctryAll=false;
+let filter="all", region="world", selected=null, country=null, ctryAll=false, playTo=null;
 
 /* ---------- language ---------- */
-const I18N={"I&S ver.，含 dance intro，只唱第一段": "I&S ver., with dance intro, first verse only", "省略第二段": "second verse skipped", "廣島～橫濱": "Hiroshima – Yokohama", "依나무위키（11/8 版，已含橫濱場）。Re-encore 第一首：福岡～仙台是 Sayonara，廣島～橫濱是 Color of Love。幕張 FINAL（2027/2/20、2/21）setlist 尚未公開。": "Per Namuwiki (as of 8 Nov, including the Yokohama shows). First re-encore song: Sayonara in Fukuoka – Sendai, Color of Love in Hiroshima – Yokohama. The Makuhari FINAL setlist (2027/2/20, 2/21) has not been revealed yet.", "幕張 FINAL": "Makuhari FINAL", "說明": "About this section", "回到頂端": "Back to top", "Setlist 尚未公開": "Setlist not yet revealed", "追加公演 FINAL": "Added shows: FINAL", "幕張 Event Hall（千葉市）": "Makuhari Event Hall (Chiba City)","奧林匹克大廳 Olympic Hall": "Olympic Hall", "武藏野森綜合體育廣場": "Musashino Forest Sport Plaza", "一宮市民會館（愛知縣一宮市）": "Ichinomiya Civic Hall (Ichinomiya, Aichi)", "JMS Aster Plaza 大廳": "JMS Aster Plaza Large Hall", "福岡國際會議場": "Fukuoka International Congress Center", "Pacifico Yokohama 國立大廳": "Pacifico Yokohama National Convention Hall", "SK 奧林匹克手球競技場": "SK Olympic Handball Gymnasium", "台大綜合體育館": "NTU Sports Center", "Marine Messe 福岡": "Marine Messe Fukuoka", "神戶世界紀念館": "World Memorial Hall, Kobe", "New Jersey Performing Arts Center（紐澤西州紐華克）": "New Jersey Performing Arts Center (Newark, NJ)", "高麗大學化汀體育館 Tiger Dome": "Korea University Hwajeong Tiger Dome", "廣島 Sun Plaza Hall": "Hiroshima Sun Plaza Hall", "大阪城 Hall": "Osaka-jo Hall", "福岡國際中心": "Fukuoka Kokusai Center", "安可場": "Encore shows", "新濠影滙綜藝館": "Studio City Event Center", "倫敦人綜藝館": "The Londoner Arena", "台北國際會議中心 TICC": "Taipei International Convention Center (TICC)", "東京 Garden Theater": "Tokyo Garden Theater", "福岡市民會館": "Fukuoka Civic Hall", "神戶國際會館 Kokusai Hall": "Kobe Kokusai Hall", "Fenice Sakai 大廳（大阪府堺市）": "Fenice Sakai Grand Hall (Sakai, Osaka)", "仙台銀行 Hall 伊澤米蒂 21 大廳": "Sendai Bank Hall Izumity 21 Main Hall", "福山藝術文化 Hall Reed Rose 大廳（廣島縣福山市）": "Fukuyama Reed & Rose Hall, Main Hall (Fukuyama, Hiroshima)", "Niterra 日本特殊陶業市民會館 Forest Hall": "Nagoya Civic Assembly Hall (Niterra) Forest Hall", "奬忠體育館": "Jangchung Arena", "五股工商展覽館（新北市五股）": "Wugu Exhibition Center (Wugu, New Taipei)", "AXA 宏利 Dreamland": "AXA Dreamland", "倫敦人劇院": "The Londoner Theatre", "機場路": "Airport Goodbyes", "首次單獨演唱會。首爾原訂 2 場秒殺後加開 8/18；日本先在東京開 2 場，2018 年 5–6 月再走 6 城 8 場的 Hall Tour。8/18 首場安可的 Cool World 與 Candy 順序相反。": "Their first solo concert. Seoul was planned for two nights; both sold out instantly and 8/18 was added. In Japan they first played two shows in Tokyo, then an 8-show, 6-city Hall Tour in May–June 2018. At the 8/18 opener, Cool World and Candy were swapped in the encore.", "單獨演唱會": "Solo concert", "約 52,000": "approx. 52,000", "韓國": "South Korea", "日本": "Japan", "首爾": "Seoul", "日本 Hall Tour": "Japan Hall Tour", "日文版": "Japanese ver.", "主題樂園概念，7 國 14 城 19 場，首次北美巡演。新加坡場 Joy 肩膀受傷送醫，All Right 之後以四人演出。LA 原訂 2/8 一場，加開 2/7；多倫多因需求換到更大的 Coca-Cola Coliseum。": "An amusement-park concept: 19 shows in 14 cities across 7 countries, and their first North American tour. In Singapore, Joy injured her shoulder and went to hospital, so the show continued with four members after All Right. LA was planned for 2/8 only and 2/7 was added; Toronto moved to the larger Coca-Cola Coliseum due to demand.", "世界巡演": "World tour", "日本 5 場約 40,000": "Japan, 5 shows: approx. 40,000", "亞洲": "Asia", "日本 Arena Tour": "Japan Arena Tour", "北美": "North America", "首爾／亞洲": "Seoul / Asia", "發行前首唱": "performed before release", "日本 Arena": "Japan Arena", "新曲": "new song", "首爾 2 場後轉往日本 Arena Tour。Wendy 因 2019 年 12 月彩排時摔傷缺席日本場次，由四人演出。2020 年 3 月橫濱 2 場與 6 月首爾安可場皆因 COVID-19 取消。": "Two shows in Seoul, then a Japan Arena Tour. Wendy was injured in a fall during rehearsals in December 2019 and missed the Japan shows, which were performed by four members. The two Yokohama shows in March 2020 and the Seoul encore shows in June were cancelled due to COVID-19.", "亞洲巡演": "Asia tour", "COVID-19 取消": "Cancelled (COVID-19)", "相隔 3 年 5 個月的單獨演唱會，以莫比烏斯環為主軸：首爾第一天從 Red 唱到 Velvet，第二天倒過來從 Velvet 唱到 Red。這次沒有個人 solo 舞台，Birthday 迷你專輯全曲都有演出。首爾 4/2 觀眾集體喊 Zimzalabim，成員只有伴唱帶也臨時加唱。Joy 4/26 起暫停活動，橫濱場起以四人演出；曼谷 2 場在 Wendy 確診後取消。倫敦場是第一個獲《衛報》五星評價的 K-pop 演唱會。": "Their first solo concert in 3 years and 5 months, built around a Möbius strip: on Seoul Day 1 they went from Red to Velvet, and on Day 2 in reverse, from Velvet to Red. There were no solo stages this time, and every song on the Birthday mini album was performed. On 4/2 in Seoul the crowd chanted for Zimzalabim, and the members added it on the spot with only the backing track. Joy paused activities from 4/26, so the shows from Yokohama on were performed by four members; the two Bangkok shows were cancelled after Wendy tested positive for COVID-19. The London show was the first K-pop concert to get a five-star review from The Guardian.", "首爾 2 天 14,000": "Seoul, 2 days: 14,000", "依나무위키。「亞洲・歐洲巡演」適用新加坡、馬尼拉、雅加達、巴黎、柏林、阿姆斯特丹、倫敦。": "Per Namuwiki. \"Asia & Europe tour\" applies to Singapore, Manila, Jakarta, Paris, Berlin, Amsterdam and London.", "取消": "Cancelled", "歐洲": "Europe", "首爾 4/1": "Seoul 4/1", "首爾 4/2": "Seoul 4/2", "觀眾點唱，只有伴唱帶": "requested by the audience; backing track only", "亞洲・歐洲巡演": "Asia & Europe tour", "橫濱": "Yokohama", "紀念出道十週年的首次 Fan-Con（나무위키歸類為見面會，有讀歌迷來信等環節），5 個地區 9 場，約 180 分鐘。首爾原訂 8/3–4，加開 8/2；澳門也加開 9/29。Sunny Afternoon、Knock Knock、Underwater、Sunflower、Sweet Dreams 在這次首度公開舞台，So Good 則是發行 6 年後首次進 setlist。這是 Wendy、Yeri 以 SM 旗下身分參與的最後一次團體公演。": "Their first Fan-Con, for their 10th anniversary (Namuwiki classes it as a fan meeting, with segments such as reading fan letters): 9 shows in 5 regions, about 180 minutes each. Seoul was planned for 8/3–4 and 8/2 was added; Macau also added 9/29. Sunny Afternoon, Knock Knock, Underwater, Sunflower and Sweet Dreams got their first stages here, and So Good entered a setlist for the first time, 6 years after release. This was the last group show with Wendy and Yeri as SM artists.", "出道 10 週年 Fan-Con Tour": "10th Anniversary Fan-Con Tour", "Fan-Con 巡演": "Fan-Con tour", "依나무위키。首爾 8/4 最後 Zimzalabim 連唱三次，散場後觀眾仍喊安可超過十分鐘。": "Per Namuwiki. On 8/4 in Seoul, Zimzalabim was sung three times in a row at the end, and the crowd kept calling for an encore for over ten minutes after the show.", "首爾 8/2": "Seoul 8/2", "四人舞台": "four-member stage", "Yeri 個人舞台 intro": "Yeri solo stage intro", "ReVeluv 團體舞": "ReVeluv group dance", "Joy 個人舞台 intro": "Joy solo stage intro", "Remix，Wendy 個人 bridge": "Remix, Wendy solo bridge", "Irene 個人舞台 intro": "Irene solo stage intro", "Seulgi 個人舞台 intro": "Seulgi solo stage intro", "團體舞台 intro": "Group stage intro", "首爾 8/3": "Seoul 8/3", "驚喜曲": "surprise song", "首爾 8/4・馬尼拉": "Seoul 8/4 · Manila", "第三段副歌連唱兩次": "third chorus sung twice", "曼谷・雅加達・澳門": "Bangkok · Jakarta · Macau", "雅加達第三段副歌連唱兩次": "third chorus sung twice in Jakarta", "五人完全體回歸前的 Fan-Con，原訂 8/1（出道 12 週年當天）與 8/2，因需求加開 7/31。新曲〈Surfin' Boy〉〈Hula Hoop〉在專輯發行前首唱。": "A Fan-Con ahead of the five-member comeback. Planned for 8/1 (their 12th anniversary) and 8/2, with 7/31 added due to demand. The new songs Surfin' Boy and Hula Hoop were performed before the album's release.", "나무위키": "Namuwiki", "7/31 現場紀錄": "7/31 live report", "2018 年後首次": "first time since 2018", "Live 首唱": "first live performance", "Happiness · Ice Cream Cake · Russian Roulette（伴唱帶）": "Happiness · Ice Cream Cake · Russian Roulette (backing tracks)", "2019 年後首次": "first time since 2019", "Irene & Seulgi 出道 5 年來首次單獨演唱會，7 國 9 場，Monster、TILT 兩張迷你專輯全曲都上了舞台。開場信號曲用的是兩人起點的 Be Natural。首爾第二天 Wendy、Joy 到場觀看；曼谷場 Zimzalabim 被安可重複 6 次；台北場因音響設備事故一度中斷。安可後的 Red Velvet 曲目每城不同。": "Irene & Seulgi's first concert in 5 years as a unit: 9 shows in 7 countries, with every song from both the Monster and TILT mini albums performed. The start-signal song was Be Natural, where the duo began. Wendy and Joy came to watch on Seoul Day 2; in Bangkok, Zimzalabim was called back for an encore 6 times; the Taipei show was briefly halted by a sound equipment failure. The Red Velvet songs after the encore changed in every city.", "小分隊巡演": "Unit tour", "依나무위키。東京兩天的安可沒有列 Jelly，安可從第 23 首起算；9/24 的 Swimming Pool 在 Re-encore 唱了兩次。": "Per Namuwiki. Jelly is not listed in the encores of the two Tokyo shows, so the encore starts from song 23; on 9/24 Swimming Pool was sung twice in the re-encore.", "首爾 6/14": "Seoul 6/14", "I&S ver.，只唱第一段": "I&S ver., first verse only", "首爾 6/15": "Seoul 6/15", "新加坡・曼谷": "Singapore · Bangkok", "曼谷被安可重複 6 次": "called back 6 times in Bangkok", "澳門": "Macau", "台北": "Taipei", "吉隆坡": "Kuala Lumpur", "東京 9/24": "Tokyo 9/24", "東京 9/25": "Tokyo 9/25", "首次專為日本規劃的巡演，原訂 7 城 8 場；11/5 橫濱場結束時宣布追加公演「IRENE & SEULGI JAPAN TOUR 2027 -blank- FINAL in Makuhari」，2027 年 2 月 20、21 日在千葉幕張 Event Hall 以升級版內容演出 2 場。每場約 150 分鐘。": "Their first tour planned specifically for Japan, originally 8 shows in 7 cities. At the end of the 11/5 Yokohama show, an added run was announced: \"IRENE & SEULGI JAPAN TOUR 2027 -blank- FINAL in Makuhari\", 2 shows with an upgraded production on 20 and 21 February 2027 at Makuhari Event Hall, Chiba. Each show runs about 150 minutes.", "Cheetah（日本 1st Mini）": "Cheetah (Japan 1st Mini)", "依나무위키。Re-encore 第一首每城不同；名古屋之後的場次還沒有紀錄。": "Per Namuwiki. The first re-encore song differs by city; there is no record yet for the shows from Nagoya on.", "福岡～仙台": "Fukuoka – Sendai", "I&S ver.，第一段": "I&S ver., first verse", "廣島（福山）": "Hiroshima (Fukuyama)", "名古屋・橫濱": "Nagoya · Yokohama", "第一首待補（福岡～仙台是 Sayonara、廣島是 Color of Love）": "First song TBA (Sayonara in Fukuoka – Sendai, Color of Love in Hiroshima)", "Irene 首次個人巡演，5 城 7 場，台北場在台大綜合體育館。": "Irene's first solo tour: 7 shows in 5 cities. The Taipei shows were at the NTU Sports Center.", "個人巡演": "Solo tour", "Wendy 首次個人世界巡演，含美國 7 站；亞特蘭大場取消。台灣站在新北五股。2026 年 2–3 月回首爾在 Ticketlink Live Arena 加開安可場，setlist 大幅改編：加入朴志胤〈幻想〉、朴華耀飛〈那種事〉兩首翻唱，以及 OST〈한마디면 돼요〉〈Daydream〉，Wendy 也走進觀眾席和歌迷近距離互動。": "Wendy's first solo world tour, including 7 US stops; Atlanta was cancelled. The Taiwan show was in Wugu, New Taipei. In Feb–Mar 2026 she returned to Seoul for encore shows at Ticketlink Live Arena with a heavily reworked setlist: two covers, Park Ji-yoon's Illusion and Park Hwa Yobi's Something Like That, plus the OSTs 한마디면 돼요 and Daydream. Wendy also walked into the audience to interact with fans up close.", "個人世界巡演": "Solo world tour", "首爾、安可場以外的城市以首爾場 setlist 代表。安可場依 setlist.fm。": "Cities other than Seoul and the encore shows use the Seoul setlist. Encore shows per setlist.fm.", "美國": "United States", "安可": "Encore", "Day 1：If I Could Read Your Mind（Yumi's Cells）／Day 2：兩個字（Start-Up）": "Day 1: If I Could Read Your Mind (Yumi's Cells) / Day 2: Two Words (Start-Up)", "安可場 2/28": "Encore show 2/28", "朴志胤〈환상〉翻唱": "cover of Park Ji-yoon's 환상", "朴華耀飛〈그런 일은〉翻唱": "cover of Park Hwa Yobi's 그런 일은", "〈한마디면 돼요〉，키스는 괜히 해서! OST": "한마디면 돼요, OST of 키스는 괜히 해서!", "이 사랑 통역 되나요? OST": "OST of 이 사랑 통역 되나요?", "Airport Goodbyes，검정치마 × WENDY": "Airport Goodbyes, 검정치마 × WENDY", "La Rouge ver.，含其他歌曲迷你串燒": "La Rouge ver., with a mini medley of other songs", "安可場 3/1": "Encore show 3/1", "Joy 首次個人見面會在首爾 YES24 Live Hall，2026 年延伸為亞洲巡迴〈JOY SPLASH〉。以見面會形式為主，穿插遊戲與歌迷互動環節。": "Joy's first solo fan meeting was held at YES24 Live Hall in Seoul, then extended into the JOY SPLASH Asia tour in 2026. Mostly a fan-meeting format, with games and fan interaction between songs.", "個人見面會巡演": "Solo fan meeting tour", "首爾場依나무위키與歌迷整理的 setlist；台北場依 JOYful Global Union（該推文寫成 La Vie en Rose，另一份 setlist 與香港場皆為 La Vie En Blue，判斷為筆誤）；香港場依 @RVELITES 整理；曼谷場依 setlist.fm；吉隆坡場依 The Seoul Story 現場報導。": "Seoul per Namuwiki and fan-compiled setlists; Taipei per JOYful Global Union (that post says La Vie en Rose, but another setlist and the Hong Kong show both have La Vie En Bleu, so it is treated as a typo); Hong Kong per @RVELITES; Bangkok per setlist.fm; Kuala Lumpur per The Seoul Story's live report.", "首爾 2025/10/3": "Seoul 2025/10/3", "여름 편지": "Korean title: 여름 편지", "BoA〈아틀란티스 소녀〉翻唱": "cover of BoA's 아틀란티스 소녀", "OST｜她愛上了我的謊": "OST | The Liar and His Lover", "機智醫生生活 2 OST": "Hospital Playlist 2 OST", "宇多田光 翻唱": "Hikaru Utada cover", "唱兩次": "sung twice", "台北 3/15": "Taipei 3/15", "OST 串燒｜機智醫生生活 2": "OST medley | Hospital Playlist 2", "OST 串燒｜與 BIG Naughty": "OST medley | with BIG Naughty", "OST 串燒｜她愛上了我的謊": "OST medley | The Liar and His Lover", "George Benson 翻唱": "George Benson cover", "香港 3/21": "Hong Kong 3/21", "曼谷 3/28": "Bangkok 3/28", "Red Velvet 曲": "Red Velvet song", "吉隆坡 4/25": "Kuala Lumpur 4/25", "互動環節：Ice Cream Cake、Red Flavor、Feel My Rhythm、Peek-A-Boo 片段": "Interactive segment: snippets of Ice Cream Cake, Red Flavor, Feel My Rhythm, Peek-A-Boo", "solo ver.，應歌迷要求": "solo ver., fan request", "Red Velvet 韓文": "Red Velvet (Korean)", "Red Velvet 日文": "Red Velvet (Japanese)", "單曲": "Single", "迷你 1 輯": "1st mini album", "迷你 2 輯": "2nd mini album", "迷你 3 輯": "3rd mini album", "迷你 4 輯": "4th mini album", "迷你 5 輯": "5th mini album", "迷你 6 輯": "6th mini album", "正規 1 輯": "1st full album", "正規 2 輯": "2nd full album", "正規 3 輯": "3rd full album", "正規 2 輯改版": "2nd full album repackage", "夏日迷你": "Summer mini album", "迷你": "Mini album", "改版": "Repackage", "另收 Perfect Velvet 全曲": "also includes all of Perfect Velvet", "另收 Bad Boy（English Ver.），次數算在原曲 Bad Boy": "also includes Bad Boy (English Ver.), counted under the original Bad Boy", "另收英文版，次數算在原曲": "also includes the English version, counted under the original", "另收 Day 1、Day 2 全曲": "also includes all of Day 1 and Day 2", "另收 Cosmic 全曲": "also includes all of Cosmic", "日本迷你 1 輯": "Japan 1st mini album", "日本迷你 2 輯": "Japan 2nd mini album", "日本正規 1 輯": "Japan 1st full album", "11 首中 6 首是已發行曲重新收錄": "6 of the 11 tracks are re-recorded earlier releases", "11/4 發行": "out 11/4", "特別專輯": "Special album", "重新演繹 2000 年代名曲的翻唱專輯": "a covers album of 2000s hits", "安可 VCR 也用這首的伴奏，觀眾跟著合唱是這場的應援活動之一。": "The encore VCR also used this song's instrumental, and the audience singing along was one of the fan events of this concert.", "這場也把它排進安可最後一首，真的唱了出來。": "This concert also put it as the last encore song, and it was actually performed.", "Red Velvet 演出中第一次不用 Somethin Kinda Crazy 當開場信號。這首在 Random Play Dance 環節以伴唱帶播放，沒有正式演唱。": "The first Red Velvet show not to use Somethin Kinda Crazy as the start signal. The song was played as a backing track in the Random Play Dance segment, not performed live.", "團體演唱會都用 Somethin Kinda Crazy，這場改用나무위키所說「Irene & Seulgi 的起點」Be Natural。": "Group concerts all use Somethin Kinda Crazy; this tour switched to Be Natural, which Namuwiki calls \"where Irene & Seulgi began\".", "日本 1st 迷你專輯 Cheetah 的收錄曲，巡演期間專輯才剛要發行。": "A track from the Japan 1st mini album Cheetah, which was only about to be released during the tour.", "나무위키記載為「콘서트 시작 신호용 오프닝곡」。正規 1 輯主打，演出中段也以加了新 dance break 的版本正式演唱。": "Namuwiki describes it as the \"opening song used as the concert start signal\". The title track of her 1st full album, it was also performed mid-show in a version with a new dance break.", "沒有開場信號曲的紀錄。나무위키的 setlist 以 Opening VCR 開頭，接著 Joy 唱〈여름 편지 (Scent Of Green)〉開場，媒體報導也寫是用這首歌「打開序幕」。": "No record of a start-signal song. The Namuwiki setlist starts with the Opening VCR, then Joy opens with 여름 편지 (Scent Of Green); media reports also say the show \"opened\" with this song.", "Red Velvet 演唱會・巡演紀錄 · 2017 — 2026": "Red Velvet concerts & tours · 2017 — 2026", "關於這個頁面": "About this page", "收錄 Red Velvet 全員的單獨演唱會與 Fan-Con、Irene & Seulgi 小分隊巡演，以及成員個人演唱會與見面會巡演。Setlist 以나무위키為主、Wikipedia 與現場紀錄補充；地圖上點城市可以看到哪一年、哪個巡演在那裡開過。": "Covers Red Velvet's full-group solo concerts and Fan-Cons, the Irene & Seulgi unit tours, and the members' solo concert and fan meeting tours. Setlists are mainly from Namuwiki, supplemented by Wikipedia and live reports. Click a city on the map to see which tour played there and when.", "各陣容場次比例": "Share of shows by lineup", "頁面": "Pages", "巡演・地圖・Setlist": "Tours · Map · Setlists", "巡演地圖": "Tours", "收錄曲演出統計": "Album tracks performed", "收錄曲": "Tracks", "開場信號曲": "Start-signal songs", "信號曲": "Signal", "Setlist 對照": "Setlist compare", "對照": "Compare", "分析": "Analysis", "陣容": "Lineup", "依陣容篩選（團體、小分隊、成員）": "Filter by lineup (group, unit, members)", "依陣容篩選": "Filter by lineup", "分析目錄": "Analysis sections", "巡演基因圖": "Tour DNA", "開場・壓軸・安可": "Openers · Closers · Encores", "主打 vs 收錄曲": "Title tracks vs B-sides", "時代分布": "Song eras", "每場曲數": "Songs per show", "舞台首唱": "Live before release", "遲來首唱": "Late live debuts", "韓國 vs 海外": "Korea vs overseas", "城市回訪": "Return visits", "成員 Solo 舞台": "Member solo stages", "帶到個人舞台": "Group songs on solo stages", "固定搭檔": "Song pairs", "復活紀錄": "Revivals", "跳到": "Jump to", "跳到分析區塊": "Jump to an analysis section", "年表": "Timeline", "每個點是一場演出，點一下跳到該巡演": "Each dot is a show; click one to jump to its tour", "2017 到 2026 年團體、小分隊與成員的演出年表": "Timeline of group, unit and member shows, 2017 to 2026", "巡迴地圖": "Tour map", "圓點大小 = 場次數。拖曳移動，＋／－ 或 Ctrl＋滾輪、雙指縮放": "Dot size = number of shows. Drag to pan; zoom with + / −, Ctrl + scroll or pinch", "地圖範圍": "Map region", "全球": "World", "韓日台港澳": "KR · JP · TW · HK · MO", "放大": "Zoom in", "縮小": "Zoom out", "重設": "Reset", "Red Velvet 巡演城市世界地圖": "World map of Red Velvet tour cities", "所有演出": "All shows", "每場的「合照 ↗」會在 X 開啟官方帳號在演出當天與隔天的照片貼文（需登入 X），大合照通常就在裡面。日本場同時搜尋 @Red_VelvetJP 與 @RVsmtown，Wendy W:EALIVE 搜尋 @WENDY_offcl。": "Each show's \"Photos ↗\" link opens the official account's photo posts on X from the show day and the next day (X login required); the audience group photo is usually there. Japan shows search both @Red_VelvetJP and @RVsmtown; Wendy's W:EALIVE searches @WENDY_offcl.", "巡演索引": "Tour index", "全部展開": "Expand all", "全部收合": "Collapse all", "城市索引": "City index", "演出開始前播放、讓觀眾知道「要開始了」的那首歌": "The song played before the show to tell the audience it's about to start", "Red Velvet 團體演唱會傳統上都用 Somethin Kinda Crazy 當開場信號，2026 年 Fan-Con 才第一次換成 Ice Cream Cake。小分隊與個人演出則各自換成自己的歌。標籤說明：「明確記載」是該場나무위키條目直接寫明；「依慣例」是條目寫「團體歷來演唱會都用」，但該場頁面沒有單獨記載。": "Red Velvet group concerts have traditionally used Somethin Kinda Crazy as the start signal; the 2026 Fan-Con was the first to switch, to Ice Cream Cake. Unit and solo shows each use their own song. Labels: \"Documented\" means the show's Namuwiki article states it directly; \"By tradition\" means Namuwiki says the group has always used it, but the show's own page doesn't record it.", "選兩場，標出只出現在其中一場的歌": "Pick two shows to highlight songs that appear in only one of them", "A 場": "Show A", "A 場巡演": "Show A tour", "A 場日期": "Show A date", "B 場": "Show B", "B 場巡演": "Show B tour", "B 場日期": "Show B date", "紅底 ● 表示只在這一場出現。沒有個別 setlist 的場次，以同巡演的代表 setlist 計算；VCR、伴唱帶與文字說明不列入比較。": "Red ● marks songs that appear only in that show. Shows without their own setlist use the tour's representative setlist; VCRs, backing tracks and text notes are not compared.", "每列一首歌、每欄一個巡演；顏色越深代表那個巡演唱的場數比例越高": "One row per song, one column per tour; darker means the song was sung at a larger share of that tour's shows", "歌曲範圍": "Songs", "排序": "Sort", "點歌名可以看每一場的日期。小字是發行年份。": "Click a song to see every show it was performed at. Small text is the release year.", "每場第一首、本篇最後一首，以及安可唱過的歌": "The first song of each show, the last song of the main set, and songs sung in encores", "每個巡演唱的歌裡，主打歌、收錄曲、非專輯曲各占多少（每首只算一次）": "For each tour, the share of title tracks, B-sides and non-album songs (each song counted once)", "主打歌": "Title tracks", "收錄曲（B-side）": "B-sides", "非專輯曲・翻唱": "Non-album songs & covers", "每個巡演唱的歌，依原曲發行年份分色（每首歌只算一次）": "Songs sung on each tour, coloured by original release year (each song counted once)", "每場實際唱的歌數（不含 VCR、伴唱帶），依時間排列": "Songs actually performed per show (excluding VCRs and backing tracks), in chronological order", "在演出中比正式發行更早公開的歌": "Songs performed live before their official release", "舞台首唱排序": "Sort live debuts", "Red Velvet 團體專輯曲，從發行到第一次被唱隔了多久": "Red Velvet group album tracks: how long from release to first live performance", "首唱間隔分類": "Debut gap category", "韓國場 vs 海外場": "Korea vs overseas shows", "同一個巡演，只在韓國唱或只在海外唱的歌": "Within the same tour, songs sung only in Korea or only overseas", "被兩個以上的巡演造訪過的城市": "Cities visited by two or more tours", "setlist 標明為個人舞台、solo 或個人 intro 的段落": "Setlist segments marked as a solo stage, solo or solo intro", "帶到個人舞台的團體曲": "Group songs on solo stages", "小分隊與成員個人演出唱的 Red Velvet 團體專輯曲（個人版）": "Red Velvet group album tracks sung in unit and member solo shows (solo versions)", "「團體演唱會」欄是這首歌在 Red Velvet 團體演出中唱過的場數；0 代表只有成員在個人舞台唱過。": "\"Group concerts\" is how many Red Velvet group shows the song was sung at; 0 means it has only been sung by members on their own stages.", "最常前後接著唱的兩首歌（中間沒有 VCR 或段落切換）": "Two songs most often sung back to back (no VCR or segment break between them)", "至少出現在幾個巡演": "Minimum number of tours", "依「出現在幾個巡演」排序，再看場數，避免場次多的巡演灌票。點歌名可以看那首歌的逐場紀錄和它最常的前後搭檔。": "Sorted by the number of tours, then by shows, so tours with many shows don't dominate. Click a song to see its show-by-show record and its most common neighbours.", "隔了很久才再次登上本頁演出的歌": "Songs that came back to the stage after a long break", "間隔門檻": "Gap threshold", "復活紀錄啞鈴圖：每首歌從上次演唱到再次演唱的間隔": "Revival dumbbell chart: the gap between each song's previous and next performance", "以表格檢視": "View as table", "收錄曲演出次數": "How often each album track was performed", "統計本頁所有場次中，每張專輯的收錄曲被唱過幾場；小分隊或成員個人演出唱的團體曲算在原曲，並註明「含個人版」（同一場唱兩次算一場，含其他成員巡演中的翻唱）。上方陣容篩選會改變統計範圍；只有代表 setlist 的場次，以同巡演的代表曲目計算。日文專輯裡的日文版歌曲，只計 setlist 有標明日文版的場次。重新收錄的已發行曲（例如 Bloom 裡的 Sappy）和語言版本標為灰色，不列入該專輯的「幾首唱過」；英文版則直接算在原曲。": "Counts how many shows on this page each album track was performed at. Group songs sung in unit or member solo shows count toward the original and are marked \"incl. solo ver.\" (a song sung twice in one show counts once; covers on other members' tours are included). The lineup filter above changes the scope; shows with only a representative setlist use that tour's representative songs. Japanese versions on Japanese albums only count shows whose setlist marks the Japanese version. Re-recorded earlier releases (e.g. Sappy on Bloom) and language versions are greyed out and don't count toward the album's \"tracks performed\"; English versions count toward the original.", "專輯分類": "Album group", "曲序": "Track order", "次數": "Count", "檢視": "View", "依專輯": "By album", "冷門排行": "Rarities", "計算方式": "Count by", "依場數": "Shows", "依巡演數": "Tours", "關閉": "Close", "最後更新：2026 年 11 月 11 日。城市以都會區為單位：日本依都道府縣歸到主要城市（例如堺併入大阪、福山併入廣島、一宮併入名古屋），美國依大都會區（紐華克併入紐約），新北併入台北；場館欄註明實際所在地。Setlist 為代表場次，不同城市、日期可能有差異；括號為版本或備註。只收單獨演唱會、Fan-Con 與成員個人巡演，未收 SMTOWN、音樂節、頒獎典禮與單場生日會。Wendy 2025 年在重慶、杭州的特別見面會及 Joy 2025/11/29 上海見面會未列入。Seulgi、Yeri 目前查無個人演唱會。": "Last updated 11 November 2026. Cities are grouped by metro area: in Japan by prefecture into the main city (e.g. Sakai into Osaka, Fukuyama into Hiroshima, Ichinomiya into Nagoya), in the US by metropolitan area (Newark into New York), and New Taipei into Taipei; the venue column shows the actual location. Setlists are representative and may vary by city or date; brackets show versions or notes. Only solo concerts, Fan-Cons and member solo tours are included, not SMTOWN, festivals, award shows or one-off birthday events. Wendy's 2025 special fan meetings in Chongqing and Hangzhou and Joy's 2025/11/29 Shanghai fan meeting are not listed. No solo concerts found yet for Seulgi or Yeri.", "來源：나무위키（Red Room、REDMARE、La Rouge、BALANCE、blank、I-WILL、W:EALIVE、Unmelting Our Green、A Day in Red & Velvet）、Wikipedia、setlist.fm、The Seoul Story、Malay Mail、NOWnews。": "Sources: Namuwiki (Red Room, REDMARE, La Rouge, BALANCE, blank, I-WILL, W:EALIVE, Unmelting Our Green, A Day in Red & Velvet), Wikipedia, setlist.fm, The Seoul Story, Malay Mail, NOWnews.", "個人 intro": "solo intro", "個人 dance": "solo dance"};
+const I18N={"I&S ver.，含 dance intro，只唱第一段": "I&S ver., with dance intro, first verse only", "省略第二段": "second verse skipped", "廣島～橫濱": "Hiroshima – Yokohama", "依나무위키（11/8 版，已含橫濱場）。Re-encore 第一首：福岡～仙台是 Sayonara，廣島～橫濱是 Color of Love。幕張 FINAL（2027/2/20、2/21）setlist 尚未公開。": "Per Namuwiki (as of 8 Nov, including the Yokohama shows). First re-encore song: Sayonara in Fukuoka – Sendai, Color of Love in Hiroshima – Yokohama. The Makuhari FINAL setlist (2027/2/20, 2/21) has not been revealed yet.", "幕張 FINAL": "Makuhari FINAL", "▶ 播放": "▶ Play", "說明": "About this section", "回到頂端": "Back to top", "Setlist 尚未公開": "Setlist not yet revealed", "追加公演 FINAL": "Added shows: FINAL", "幕張 Event Hall（千葉市）": "Makuhari Event Hall (Chiba City)","奧林匹克大廳 Olympic Hall": "Olympic Hall", "武藏野森綜合體育廣場": "Musashino Forest Sport Plaza", "一宮市民會館（愛知縣一宮市）": "Ichinomiya Civic Hall (Ichinomiya, Aichi)", "JMS Aster Plaza 大廳": "JMS Aster Plaza Large Hall", "福岡國際會議場": "Fukuoka International Congress Center", "Pacifico Yokohama 國立大廳": "Pacifico Yokohama National Convention Hall", "SK 奧林匹克手球競技場": "SK Olympic Handball Gymnasium", "台大綜合體育館": "NTU Sports Center", "Marine Messe 福岡": "Marine Messe Fukuoka", "神戶世界紀念館": "World Memorial Hall, Kobe", "New Jersey Performing Arts Center（紐澤西州紐華克）": "New Jersey Performing Arts Center (Newark, NJ)", "高麗大學化汀體育館 Tiger Dome": "Korea University Hwajeong Tiger Dome", "廣島 Sun Plaza Hall": "Hiroshima Sun Plaza Hall", "大阪城 Hall": "Osaka-jo Hall", "福岡國際中心": "Fukuoka Kokusai Center", "安可場": "Encore shows", "新濠影滙綜藝館": "Studio City Event Center", "倫敦人綜藝館": "The Londoner Arena", "台北國際會議中心 TICC": "Taipei International Convention Center (TICC)", "東京 Garden Theater": "Tokyo Garden Theater", "福岡市民會館": "Fukuoka Civic Hall", "神戶國際會館 Kokusai Hall": "Kobe Kokusai Hall", "Fenice Sakai 大廳（大阪府堺市）": "Fenice Sakai Grand Hall (Sakai, Osaka)", "仙台銀行 Hall 伊澤米蒂 21 大廳": "Sendai Bank Hall Izumity 21 Main Hall", "福山藝術文化 Hall Reed Rose 大廳（廣島縣福山市）": "Fukuyama Reed & Rose Hall, Main Hall (Fukuyama, Hiroshima)", "Niterra 日本特殊陶業市民會館 Forest Hall": "Nagoya Civic Assembly Hall (Niterra) Forest Hall", "奬忠體育館": "Jangchung Arena", "五股工商展覽館（新北市五股）": "Wugu Exhibition Center (Wugu, New Taipei)", "AXA 宏利 Dreamland": "AXA Dreamland", "倫敦人劇院": "The Londoner Theatre", "機場路": "Airport Goodbyes", "首次單獨演唱會。首爾原訂 2 場秒殺後加開 8/18；日本先在東京開 2 場，2018 年 5–6 月再走 6 城 8 場的 Hall Tour。8/18 首場安可的 Cool World 與 Candy 順序相反。": "Their first solo concert. Seoul was planned for two nights; both sold out instantly and 8/18 was added. In Japan they first played two shows in Tokyo, then an 8-show, 6-city Hall Tour in May–June 2018. At the 8/18 opener, Cool World and Candy were swapped in the encore.", "單獨演唱會": "Solo concert", "約 52,000": "approx. 52,000", "韓國": "South Korea", "日本": "Japan", "首爾": "Seoul", "日本 Hall Tour": "Japan Hall Tour", "日文版": "Japanese ver.", "主題樂園概念，7 國 14 城 19 場，首次北美巡演。新加坡場 Joy 肩膀受傷送醫，All Right 之後以四人演出。LA 原訂 2/8 一場，加開 2/7；多倫多因需求換到更大的 Coca-Cola Coliseum。": "An amusement-park concept: 19 shows in 14 cities across 7 countries, and their first North American tour. In Singapore, Joy injured her shoulder and went to hospital, so the show continued with four members after All Right. LA was planned for 2/8 only and 2/7 was added; Toronto moved to the larger Coca-Cola Coliseum due to demand.", "世界巡演": "World tour", "日本 5 場約 40,000": "Japan, 5 shows: approx. 40,000", "亞洲": "Asia", "日本 Arena Tour": "Japan Arena Tour", "北美": "North America", "首爾／亞洲": "Seoul / Asia", "發行前首唱": "performed before release", "日本 Arena": "Japan Arena", "新曲": "new song", "首爾 2 場後轉往日本 Arena Tour。Wendy 因 2019 年 12 月彩排時摔傷缺席日本場次，由四人演出。2020 年 3 月橫濱 2 場與 6 月首爾安可場皆因 COVID-19 取消。": "Two shows in Seoul, then a Japan Arena Tour. Wendy was injured in a fall during rehearsals in December 2019 and missed the Japan shows, which were performed by four members. The two Yokohama shows in March 2020 and the Seoul encore shows in June were cancelled due to COVID-19.", "亞洲巡演": "Asia tour", "COVID-19 取消": "Cancelled (COVID-19)", "相隔 3 年 5 個月的單獨演唱會，以莫比烏斯環為主軸：首爾第一天從 Red 唱到 Velvet，第二天倒過來從 Velvet 唱到 Red。這次沒有個人 solo 舞台，Birthday 迷你專輯全曲都有演出。首爾 4/2 觀眾集體喊 Zimzalabim，成員只有伴唱帶也臨時加唱。Joy 4/26 起暫停活動，橫濱場起以四人演出；曼谷 2 場在 Wendy 確診後取消。倫敦場是第一個獲《衛報》五星評價的 K-pop 演唱會。": "Their first solo concert in 3 years and 5 months, built around a Möbius strip: on Seoul Day 1 they went from Red to Velvet, and on Day 2 in reverse, from Velvet to Red. There were no solo stages this time, and every song on the Birthday mini album was performed. On 4/2 in Seoul the crowd chanted for Zimzalabim, and the members added it on the spot with only the backing track. Joy paused activities from 4/26, so the shows from Yokohama on were performed by four members; the two Bangkok shows were cancelled after Wendy tested positive for COVID-19. The London show was the first K-pop concert to get a five-star review from The Guardian.", "首爾 2 天 14,000": "Seoul, 2 days: 14,000", "依나무위키。「亞洲・歐洲巡演」適用新加坡、馬尼拉、雅加達、巴黎、柏林、阿姆斯特丹、倫敦。": "Per Namuwiki. \"Asia & Europe tour\" applies to Singapore, Manila, Jakarta, Paris, Berlin, Amsterdam and London.", "取消": "Cancelled", "歐洲": "Europe", "首爾 4/1": "Seoul 4/1", "首爾 4/2": "Seoul 4/2", "觀眾點唱，只有伴唱帶": "requested by the audience; backing track only", "亞洲・歐洲巡演": "Asia & Europe tour", "橫濱": "Yokohama", "紀念出道十週年的首次 Fan-Con（나무위키歸類為見面會，有讀歌迷來信等環節），5 個地區 9 場，約 180 分鐘。首爾原訂 8/3–4，加開 8/2；澳門也加開 9/29。Sunny Afternoon、Knock Knock、Underwater、Sunflower、Sweet Dreams 在這次首度公開舞台，So Good 則是發行 6 年後首次進 setlist。這是 Wendy、Yeri 以 SM 旗下身分參與的最後一次團體公演。": "Their first Fan-Con, for their 10th anniversary (Namuwiki classes it as a fan meeting, with segments such as reading fan letters): 9 shows in 5 regions, about 180 minutes each. Seoul was planned for 8/3–4 and 8/2 was added; Macau also added 9/29. Sunny Afternoon, Knock Knock, Underwater, Sunflower and Sweet Dreams got their first stages here, and So Good entered a setlist for the first time, 6 years after release. This was the last group show with Wendy and Yeri as SM artists.", "出道 10 週年 Fan-Con Tour": "10th Anniversary Fan-Con Tour", "Fan-Con 巡演": "Fan-Con tour", "依나무위키。首爾 8/4 最後 Zimzalabim 連唱三次，散場後觀眾仍喊安可超過十分鐘。": "Per Namuwiki. On 8/4 in Seoul, Zimzalabim was sung three times in a row at the end, and the crowd kept calling for an encore for over ten minutes after the show.", "首爾 8/2": "Seoul 8/2", "四人舞台": "four-member stage", "Yeri 個人舞台 intro": "Yeri solo stage intro", "ReVeluv 團體舞": "ReVeluv group dance", "Joy 個人舞台 intro": "Joy solo stage intro", "Remix，Wendy 個人 bridge": "Remix, Wendy solo bridge", "Irene 個人舞台 intro": "Irene solo stage intro", "Seulgi 個人舞台 intro": "Seulgi solo stage intro", "團體舞台 intro": "Group stage intro", "首爾 8/3": "Seoul 8/3", "驚喜曲": "surprise song", "首爾 8/4・馬尼拉": "Seoul 8/4 · Manila", "第三段副歌連唱兩次": "third chorus sung twice", "曼谷・雅加達・澳門": "Bangkok · Jakarta · Macau", "雅加達第三段副歌連唱兩次": "third chorus sung twice in Jakarta", "五人完全體回歸前的 Fan-Con，原訂 8/1（出道 12 週年當天）與 8/2，因需求加開 7/31。新曲〈Surfin' Boy〉〈Hula Hoop〉在專輯發行前首唱。": "A Fan-Con ahead of the five-member comeback. Planned for 8/1 (their 12th anniversary) and 8/2, with 7/31 added due to demand. The new songs Surfin' Boy and Hula Hoop were performed before the album's release.", "나무위키": "Namuwiki", "7/31 現場紀錄": "7/31 live report", "2018 年後首次": "first time since 2018", "Live 首唱": "first live performance", "Happiness · Ice Cream Cake · Russian Roulette（伴唱帶）": "Happiness · Ice Cream Cake · Russian Roulette (backing tracks)", "2019 年後首次": "first time since 2019", "Irene & Seulgi 出道 5 年來首次單獨演唱會，7 國 9 場，Monster、TILT 兩張迷你專輯全曲都上了舞台。開場信號曲用的是兩人起點的 Be Natural。首爾第二天 Wendy、Joy 到場觀看；曼谷場 Zimzalabim 被安可重複 6 次；台北場因音響設備事故一度中斷。安可後的 Red Velvet 曲目每城不同。": "Irene & Seulgi's first concert in 5 years as a unit: 9 shows in 7 countries, with every song from both the Monster and TILT mini albums performed. The start-signal song was Be Natural, where the duo began. Wendy and Joy came to watch on Seoul Day 2; in Bangkok, Zimzalabim was called back for an encore 6 times; the Taipei show was briefly halted by a sound equipment failure. The Red Velvet songs after the encore changed in every city.", "小分隊巡演": "Unit tour", "依나무위키。東京兩天的安可沒有列 Jelly，安可從第 23 首起算；9/24 的 Swimming Pool 在 Re-encore 唱了兩次。": "Per Namuwiki. Jelly is not listed in the encores of the two Tokyo shows, so the encore starts from song 23; on 9/24 Swimming Pool was sung twice in the re-encore.", "首爾 6/14": "Seoul 6/14", "I&S ver.，只唱第一段": "I&S ver., first verse only", "首爾 6/15": "Seoul 6/15", "新加坡・曼谷": "Singapore · Bangkok", "曼谷被安可重複 6 次": "called back 6 times in Bangkok", "澳門": "Macau", "台北": "Taipei", "吉隆坡": "Kuala Lumpur", "東京 9/24": "Tokyo 9/24", "東京 9/25": "Tokyo 9/25", "首次專為日本規劃的巡演，原訂 7 城 8 場；11/5 橫濱場結束時宣布追加公演「IRENE & SEULGI JAPAN TOUR 2027 -blank- FINAL in Makuhari」，2027 年 2 月 20、21 日在千葉幕張 Event Hall 以升級版內容演出 2 場。每場約 150 分鐘。": "Their first tour planned specifically for Japan, originally 8 shows in 7 cities. At the end of the 11/5 Yokohama show, an added run was announced: \"IRENE & SEULGI JAPAN TOUR 2027 -blank- FINAL in Makuhari\", 2 shows with an upgraded production on 20 and 21 February 2027 at Makuhari Event Hall, Chiba. Each show runs about 150 minutes.", "Cheetah（日本 1st Mini）": "Cheetah (Japan 1st Mini)", "依나무위키。Re-encore 第一首每城不同；名古屋之後的場次還沒有紀錄。": "Per Namuwiki. The first re-encore song differs by city; there is no record yet for the shows from Nagoya on.", "福岡～仙台": "Fukuoka – Sendai", "I&S ver.，第一段": "I&S ver., first verse", "廣島（福山）": "Hiroshima (Fukuyama)", "名古屋・橫濱": "Nagoya · Yokohama", "第一首待補（福岡～仙台是 Sayonara、廣島是 Color of Love）": "First song TBA (Sayonara in Fukuoka – Sendai, Color of Love in Hiroshima)", "Irene 首次個人巡演，5 城 7 場，台北場在台大綜合體育館。": "Irene's first solo tour: 7 shows in 5 cities. The Taipei shows were at the NTU Sports Center.", "個人巡演": "Solo tour", "Wendy 首次個人世界巡演，含美國 7 站；亞特蘭大場取消。台灣站在新北五股。2026 年 2–3 月回首爾在 Ticketlink Live Arena 加開安可場，setlist 大幅改編：加入朴志胤〈幻想〉、朴華耀飛〈那種事〉兩首翻唱，以及 OST〈한마디면 돼요〉〈Daydream〉，Wendy 也走進觀眾席和歌迷近距離互動。": "Wendy's first solo world tour, including 7 US stops; Atlanta was cancelled. The Taiwan show was in Wugu, New Taipei. In Feb–Mar 2026 she returned to Seoul for encore shows at Ticketlink Live Arena with a heavily reworked setlist: two covers, Park Ji-yoon's Illusion and Park Hwa Yobi's Something Like That, plus the OSTs 한마디면 돼요 and Daydream. Wendy also walked into the audience to interact with fans up close.", "個人世界巡演": "Solo world tour", "首爾、安可場以外的城市以首爾場 setlist 代表。安可場依 setlist.fm。": "Cities other than Seoul and the encore shows use the Seoul setlist. Encore shows per setlist.fm.", "美國": "United States", "安可": "Encore", "Day 1：If I Could Read Your Mind（Yumi's Cells）／Day 2：兩個字（Start-Up）": "Day 1: If I Could Read Your Mind (Yumi's Cells) / Day 2: Two Words (Start-Up)", "安可場 2/28": "Encore show 2/28", "朴志胤〈환상〉翻唱": "cover of Park Ji-yoon's 환상", "朴華耀飛〈그런 일은〉翻唱": "cover of Park Hwa Yobi's 그런 일은", "〈한마디면 돼요〉，키스는 괜히 해서! OST": "한마디면 돼요, OST of 키스는 괜히 해서!", "이 사랑 통역 되나요? OST": "OST of 이 사랑 통역 되나요?", "Airport Goodbyes，검정치마 × WENDY": "Airport Goodbyes, 검정치마 × WENDY", "La Rouge ver.，含其他歌曲迷你串燒": "La Rouge ver., with a mini medley of other songs", "安可場 3/1": "Encore show 3/1", "Joy 首次個人見面會在首爾 YES24 Live Hall，2026 年延伸為亞洲巡迴〈JOY SPLASH〉。以見面會形式為主，穿插遊戲與歌迷互動環節。": "Joy's first solo fan meeting was held at YES24 Live Hall in Seoul, then extended into the JOY SPLASH Asia tour in 2026. Mostly a fan-meeting format, with games and fan interaction between songs.", "個人見面會巡演": "Solo fan meeting tour", "首爾場依나무위키與歌迷整理的 setlist；台北場依 JOYful Global Union（該推文寫成 La Vie en Rose，另一份 setlist 與香港場皆為 La Vie En Blue，判斷為筆誤）；香港場依 @RVELITES 整理；曼谷場依 setlist.fm；吉隆坡場依 The Seoul Story 現場報導。": "Seoul per Namuwiki and fan-compiled setlists; Taipei per JOYful Global Union (that post says La Vie en Rose, but another setlist and the Hong Kong show both have La Vie En Bleu, so it is treated as a typo); Hong Kong per @RVELITES; Bangkok per setlist.fm; Kuala Lumpur per The Seoul Story's live report.", "首爾 2025/10/3": "Seoul 2025/10/3", "여름 편지": "Korean title: 여름 편지", "BoA〈아틀란티스 소녀〉翻唱": "cover of BoA's 아틀란티스 소녀", "OST｜她愛上了我的謊": "OST | The Liar and His Lover", "機智醫生生活 2 OST": "Hospital Playlist 2 OST", "宇多田光 翻唱": "Hikaru Utada cover", "唱兩次": "sung twice", "台北 3/15": "Taipei 3/15", "OST 串燒｜機智醫生生活 2": "OST medley | Hospital Playlist 2", "OST 串燒｜與 BIG Naughty": "OST medley | with BIG Naughty", "OST 串燒｜她愛上了我的謊": "OST medley | The Liar and His Lover", "George Benson 翻唱": "George Benson cover", "香港 3/21": "Hong Kong 3/21", "曼谷 3/28": "Bangkok 3/28", "Red Velvet 曲": "Red Velvet song", "吉隆坡 4/25": "Kuala Lumpur 4/25", "互動環節：Ice Cream Cake、Red Flavor、Feel My Rhythm、Peek-A-Boo 片段": "Interactive segment: snippets of Ice Cream Cake, Red Flavor, Feel My Rhythm, Peek-A-Boo", "solo ver.，應歌迷要求": "solo ver., fan request", "Red Velvet 韓文": "Red Velvet (Korean)", "Red Velvet 日文": "Red Velvet (Japanese)", "單曲": "Single", "迷你 1 輯": "1st mini album", "迷你 2 輯": "2nd mini album", "迷你 3 輯": "3rd mini album", "迷你 4 輯": "4th mini album", "迷你 5 輯": "5th mini album", "迷你 6 輯": "6th mini album", "正規 1 輯": "1st full album", "正規 2 輯": "2nd full album", "正規 3 輯": "3rd full album", "正規 2 輯改版": "2nd full album repackage", "夏日迷你": "Summer mini album", "迷你": "Mini album", "改版": "Repackage", "另收 Perfect Velvet 全曲": "also includes all of Perfect Velvet", "另收 Bad Boy（English Ver.），次數算在原曲 Bad Boy": "also includes Bad Boy (English Ver.), counted under the original Bad Boy", "另收英文版，次數算在原曲": "also includes the English version, counted under the original", "另收 Day 1、Day 2 全曲": "also includes all of Day 1 and Day 2", "另收 Cosmic 全曲": "also includes all of Cosmic", "日本迷你 1 輯": "Japan 1st mini album", "日本迷你 2 輯": "Japan 2nd mini album", "日本正規 1 輯": "Japan 1st full album", "11 首中 6 首是已發行曲重新收錄": "6 of the 11 tracks are re-recorded earlier releases", "11/4 發行": "out 11/4", "特別專輯": "Special album", "重新演繹 2000 年代名曲的翻唱專輯": "a covers album of 2000s hits", "安可 VCR 也用這首的伴奏，觀眾跟著合唱是這場的應援活動之一。": "The encore VCR also used this song's instrumental, and the audience singing along was one of the fan events of this concert.", "這場也把它排進安可最後一首，真的唱了出來。": "This concert also put it as the last encore song, and it was actually performed.", "Red Velvet 演出中第一次不用 Somethin Kinda Crazy 當開場信號。這首在 Random Play Dance 環節以伴唱帶播放，沒有正式演唱。": "The first Red Velvet show not to use Somethin Kinda Crazy as the start signal. The song was played as a backing track in the Random Play Dance segment, not performed live.", "團體演唱會都用 Somethin Kinda Crazy，這場改用나무위키所說「Irene & Seulgi 的起點」Be Natural。": "Group concerts all use Somethin Kinda Crazy; this tour switched to Be Natural, which Namuwiki calls \"where Irene & Seulgi began\".", "日本 1st 迷你專輯 Cheetah 的收錄曲，巡演期間專輯才剛要發行。": "A track from the Japan 1st mini album Cheetah, which was only about to be released during the tour.", "나무위키記載為「콘서트 시작 신호용 오프닝곡」。正規 1 輯主打，演出中段也以加了新 dance break 的版本正式演唱。": "Namuwiki describes it as the \"opening song used as the concert start signal\". The title track of her 1st full album, it was also performed mid-show in a version with a new dance break.", "沒有開場信號曲的紀錄。나무위키的 setlist 以 Opening VCR 開頭，接著 Joy 唱〈여름 편지 (Scent Of Green)〉開場，媒體報導也寫是用這首歌「打開序幕」。": "No record of a start-signal song. The Namuwiki setlist starts with the Opening VCR, then Joy opens with 여름 편지 (Scent Of Green); media reports also say the show \"opened\" with this song.", "Red Velvet 演唱會・巡演紀錄 · 2017 — 2026": "Red Velvet concerts & tours · 2017 — 2026", "關於這個頁面": "About this page", "收錄 Red Velvet 全員的單獨演唱會與 Fan-Con、Irene & Seulgi 小分隊巡演，以及成員個人演唱會與見面會巡演。Setlist 以나무위키為主、Wikipedia 與現場紀錄補充；地圖上點城市可以看到哪一年、哪個巡演在那裡開過。": "Covers Red Velvet's full-group solo concerts and Fan-Cons, the Irene & Seulgi unit tours, and the members' solo concert and fan meeting tours. Setlists are mainly from Namuwiki, supplemented by Wikipedia and live reports. Click a city on the map to see which tour played there and when.", "各陣容場次比例": "Share of shows by lineup", "頁面": "Pages", "巡演・地圖・Setlist": "Tours · Map · Setlists", "巡演地圖": "Tours", "巡演": "Tours", "收錄曲演出統計": "Album tracks performed", "收錄曲": "Tracks", "開場信號曲": "Start-signal songs", "信號曲": "Signal", "我的足跡・小遊戲": "My Shows · Game", "互動": "Play", "Setlist 對照": "Setlist compare", "對照": "Compare", "分析": "Analysis", "陣容": "Lineup", "依陣容篩選（團體、小分隊、成員）": "Filter by lineup (group, unit, members)", "依陣容篩選": "Filter by lineup", "分析目錄": "Analysis sections", "巡演基因圖": "Tour DNA", "開場・壓軸・安可": "Openers · Closers · Encores", "主打 vs 收錄曲": "Title tracks vs B-sides", "時代分布": "Song eras", "每場曲數": "Songs per show", "舞台首唱": "Live before release", "遲來首唱": "Late live debuts", "韓國 vs 海外": "Korea vs overseas", "城市回訪": "Return visits", "成員 Solo 舞台": "Member solo stages", "帶到個人舞台": "Group songs on solo stages", "固定搭檔": "Song pairs", "復活紀錄": "Revivals", "跳到": "Jump to", "跳到分析區塊": "Jump to an analysis section", "年表": "Timeline", "每個點是一場演出，點一下跳到該巡演": "Each dot is a show; click one to jump to its tour", "2017 到 2026 年團體、小分隊與成員的演出年表": "Timeline of group, unit and member shows, 2017 to 2026", "巡迴地圖": "Tour map", "圓點大小 = 場次數。拖曳移動，＋／－ 或 Ctrl＋滾輪、雙指縮放": "Dot size = number of shows. Drag to pan; zoom with + / −, Ctrl + scroll or pinch", "地圖範圍": "Map region", "全球": "World", "韓日台港澳": "KR · JP · TW · HK · MO", "放大": "Zoom in", "縮小": "Zoom out", "重設": "Reset", "Red Velvet 巡演城市世界地圖": "World map of Red Velvet tour cities", "所有演出": "All shows", "每場的「合照 ↗」會在 X 開啟官方帳號在演出當天與隔天的照片貼文（需登入 X），大合照通常就在裡面。日本場同時搜尋 @Red_VelvetJP 與 @RVsmtown，Wendy W:EALIVE 搜尋 @WENDY_offcl。": "Each show's \"Photos ↗\" link opens the official account's photo posts on X from the show day and the next day (X login required); the audience group photo is usually there. Japan shows search both @Red_VelvetJP and @RVsmtown; Wendy's W:EALIVE searches @WENDY_offcl.", "巡演索引": "Tour index", "全部展開": "Expand all", "全部收合": "Collapse all", "城市索引": "City index", "演出開始前播放、讓觀眾知道「要開始了」的那首歌": "The song played before the show to tell the audience it's about to start", "Red Velvet 團體演唱會傳統上都用 Somethin Kinda Crazy 當開場信號，2026 年 Fan-Con 才第一次換成 Ice Cream Cake。小分隊與個人演出則各自換成自己的歌。標籤說明：「明確記載」是該場나무위키條目直接寫明；「依慣例」是條目寫「團體歷來演唱會都用」，但該場頁面沒有單獨記載。": "Red Velvet group concerts have traditionally used Somethin Kinda Crazy as the start signal; the 2026 Fan-Con was the first to switch, to Ice Cream Cake. Unit and solo shows each use their own song. Labels: \"Documented\" means the show's Namuwiki article states it directly; \"By tradition\" means Namuwiki says the group has always used it, but the show's own page doesn't record it.", "選兩場，標出只出現在其中一場的歌": "Pick two shows to highlight songs that appear in only one of them", "A 場": "Show A", "A 場巡演": "Show A tour", "A 場日期": "Show A date", "B 場": "Show B", "B 場巡演": "Show B tour", "B 場日期": "Show B date", "紅底 ● 表示只在這一場出現。沒有個別 setlist 的場次，以同巡演的代表 setlist 計算；VCR、伴唱帶與文字說明不列入比較。": "Red ● marks songs that appear only in that show. Shows without their own setlist use the tour's representative setlist; VCRs, backing tracks and text notes are not compared.", "每列一首歌、每欄一個巡演；顏色越深代表那個巡演唱的場數比例越高": "One row per song, one column per tour; darker means the song was sung at a larger share of that tour's shows", "歌曲範圍": "Songs", "排序": "Sort", "點歌名可以看每一場的日期。小字是發行年份。": "Click a song to see every show it was performed at. Small text is the release year.", "每場第一首、本篇最後一首，以及安可唱過的歌": "The first song of each show, the last song of the main set, and songs sung in encores", "每個巡演唱的歌裡，主打歌、收錄曲、非專輯曲各占多少（每首只算一次）": "For each tour, the share of title tracks, B-sides and non-album songs (each song counted once)", "主打歌": "Title tracks", "收錄曲（B-side）": "B-sides", "非專輯曲・翻唱": "Non-album songs & covers", "每個巡演唱的歌，依原曲發行年份分色（每首歌只算一次）": "Songs sung on each tour, coloured by original release year (each song counted once)", "每場實際唱的歌數（不含 VCR、伴唱帶），依時間排列": "Songs actually performed per show (excluding VCRs and backing tracks), in chronological order", "在演出中比正式發行更早公開的歌": "Songs performed live before their official release", "舞台首唱排序": "Sort live debuts", "Red Velvet 團體專輯曲，從發行到第一次被唱隔了多久": "Red Velvet group album tracks: how long from release to first live performance", "首唱間隔分類": "Debut gap category", "韓國場 vs 海外場": "Korea vs overseas shows", "同一個巡演，只在韓國唱或只在海外唱的歌": "Within the same tour, songs sung only in Korea or only overseas", "被兩個以上的巡演造訪過的城市": "Cities visited by two or more tours", "setlist 標明為個人舞台、solo 或個人 intro 的段落": "Setlist segments marked as a solo stage, solo or solo intro", "帶到個人舞台的團體曲": "Group songs on solo stages", "小分隊與成員個人演出唱的 Red Velvet 團體專輯曲（個人版）": "Red Velvet group album tracks sung in unit and member solo shows (solo versions)", "「團體演唱會」欄是這首歌在 Red Velvet 團體演出中唱過的場數；0 代表只有成員在個人舞台唱過。": "\"Group concerts\" is how many Red Velvet group shows the song was sung at; 0 means it has only been sung by members on their own stages.", "最常前後接著唱的兩首歌（中間沒有 VCR 或段落切換）": "Two songs most often sung back to back (no VCR or segment break between them)", "至少出現在幾個巡演": "Minimum number of tours", "依「出現在幾個巡演」排序，再看場數，避免場次多的巡演灌票。點歌名可以看那首歌的逐場紀錄和它最常的前後搭檔。": "Sorted by the number of tours, then by shows, so tours with many shows don't dominate. Click a song to see its show-by-show record and its most common neighbours.", "隔了很久才再次登上本頁演出的歌": "Songs that came back to the stage after a long break", "間隔門檻": "Gap threshold", "復活紀錄啞鈴圖：每首歌從上次演唱到再次演唱的間隔": "Revival dumbbell chart: the gap between each song's previous and next performance", "以表格檢視": "View as table", "收錄曲演出次數": "How often each album track was performed", "統計本頁所有場次中，每張專輯的收錄曲被唱過幾場；小分隊或成員個人演出唱的團體曲算在原曲，並註明「含個人版」（同一場唱兩次算一場，含其他成員巡演中的翻唱）。上方陣容篩選會改變統計範圍；只有代表 setlist 的場次，以同巡演的代表曲目計算。日文專輯裡的日文版歌曲，只計 setlist 有標明日文版的場次。重新收錄的已發行曲（例如 Bloom 裡的 Sappy）和語言版本標為灰色，不列入該專輯的「幾首唱過」；英文版則直接算在原曲。": "Counts how many shows on this page each album track was performed at. Group songs sung in unit or member solo shows count toward the original and are marked \"incl. solo ver.\" (a song sung twice in one show counts once; covers on other members' tours are included). The lineup filter above changes the scope; shows with only a representative setlist use that tour's representative songs. Japanese versions on Japanese albums only count shows whose setlist marks the Japanese version. Re-recorded earlier releases (e.g. Sappy on Bloom) and language versions are greyed out and don't count toward the album's \"tracks performed\"; English versions count toward the original.", "專輯分類": "Album group", "曲序": "Track order", "次數": "Count", "檢視": "View", "依專輯": "By album", "冷門排行": "Rarities", "計算方式": "Count by", "依場數": "Shows", "依巡演數": "Tours", "關閉": "Close", "最後更新：2026 年 11 月 11 日。城市以都會區為單位：日本依都道府縣歸到主要城市（例如堺併入大阪、福山併入廣島、一宮併入名古屋），美國依大都會區（紐華克併入紐約），新北併入台北；場館欄註明實際所在地。Setlist 為代表場次，不同城市、日期可能有差異；括號為版本或備註。只收單獨演唱會、Fan-Con 與成員個人巡演，未收 SMTOWN、音樂節、頒獎典禮與單場生日會。Wendy 2025 年在重慶、杭州的特別見面會及 Joy 2025/11/29 上海見面會未列入。Seulgi、Yeri 目前查無個人演唱會。": "Last updated 11 November 2026. Cities are grouped by metro area: in Japan by prefecture into the main city (e.g. Sakai into Osaka, Fukuyama into Hiroshima, Ichinomiya into Nagoya), in the US by metropolitan area (Newark into New York), and New Taipei into Taipei; the venue column shows the actual location. Setlists are representative and may vary by city or date; brackets show versions or notes. Only solo concerts, Fan-Cons and member solo tours are included, not SMTOWN, festivals, award shows or one-off birthday events. Wendy's 2025 special fan meetings in Chongqing and Hangzhou and Joy's 2025/11/29 Shanghai fan meeting are not listed. No solo concerts found yet for Seulgi or Yeri.", "來源：나무위키（Red Room、REDMARE、La Rouge、BALANCE、blank、I-WILL、W:EALIVE、Unmelting Our Green、A Day in Red & Velvet）、Wikipedia、setlist.fm、The Seoul Story、Malay Mail、NOWnews。": "Sources: Namuwiki (Red Room, REDMARE, La Rouge, BALANCE, blank, I-WILL, W:EALIVE, Unmelting Our Green, A Day in Red & Velvet), Wikipedia, setlist.fm, The Seoul Story, Malay Mail, NOWnews.", "個人 intro": "solo intro", "個人 dance": "solo dance"};
 const CITY_EN={"首爾": ["Seoul", ""], "東京": ["Tokyo", "metro area"], "札幌": ["Sapporo", ""], "一宮": ["Ichinomiya", ""], "廣島": ["Hiroshima", "Hiroshima Pref."], "福岡": ["Fukuoka", ""], "大阪": ["Osaka", "Osaka Pref."], "橫濱": ["Yokohama", ""], "千葉": ["Chiba", "Chiba Pref."], "神戶": ["Kobe", ""], "堺": ["Sakai", ""], "仙台": ["Sendai", ""], "福山": ["Fukuyama", ""], "名古屋": ["Nagoya", "Aichi Pref."], "曼谷": ["Bangkok", ""], "台北": ["Taipei", "incl. New Taipei"], "新北": ["New Taipei", ""], "新加坡": ["Singapore", ""], "洛杉磯": ["Los Angeles", "Pasadena"], "達拉斯": ["Dallas", ""], "邁阿密": ["Miami", ""], "芝加哥": ["Chicago", ""], "紐華克": ["Newark", ""], "多倫多": ["Toronto", ""], "溫哥華": ["Vancouver", ""], "馬尼拉": ["Manila", ""], "雅加達": ["Jakarta", ""], "巴黎": ["Paris", ""], "柏林": ["Berlin", ""], "阿姆斯特丹": ["Amsterdam", ""], "倫敦": ["London", ""], "澳門": ["Macau", ""], "吉隆坡": ["Kuala Lumpur", ""], "香港": ["Hong Kong", ""], "舊金山": ["San Francisco", ""], "休士頓": ["Houston", "Sugar Land"], "紐約": ["New York", "metro area"], "華盛頓": ["Washington, D.C.", ""], "亞特蘭大": ["Atlanta", ""]};
 const COUNTRY_EN={"韓國": "South Korea", "日本": "Japan", "台灣": "Taiwan", "泰國": "Thailand", "新加坡": "Singapore", "美國": "United States", "加拿大": "Canada", "菲律賓": "Philippines", "印尼": "Indonesia", "法國": "France", "德國": "Germany", "荷蘭": "Netherlands", "英國": "United Kingdom", "馬來西亞": "Malaysia", "澳門": "Macau", "香港": "Hong Kong"};
 let LANG=(()=>{try{const h=decodeURIComponent(location.hash.slice(1));if(h==="en"||h==="zh")return h;const v=localStorage.getItem("rvLang");if(v==="en"||v==="zh")return v}catch(e){}return /^zh/i.test(navigator.language||"zh")?"zh":"en"})();
@@ -804,6 +955,7 @@ function setLang(l){
   if(l===LANG)return;LANG=l;try{localStorage.setItem("rvLang",l)}catch(e){}
   applyStatic();if(!$("#drawer").hidden)closeSong();
   renderChips();renderIndex();renderTours();applyFilter();setTabH();
+  if(!$("#view-play").hidden)renderPlay();
 }
 document.querySelectorAll(".langsw button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
 (function(){const mq=window.matchMedia?window.matchMedia("(max-width:640px)"):{matches:false};
@@ -830,12 +982,22 @@ function renderChips(){
   const sel=$("#whoSel");sel.innerHTML=opts.map(([k,l])=>`<option value="${k}"${k===filter?" selected":""}>${esc(l)}</option>`).join("");
   sel.onchange=()=>{filter=sel.value;renderChips();applyFilter()};
 }
+let _cuFirst=true;
+function countUp(root){
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  const els=[...root.querySelectorAll("b[data-to]")],dur=_cuFirst?900:450;_cuFirst=false;
+  const from=els.map(e=>+(e.dataset.from||0));els.forEach(e=>{e.textContent="0"});
+  const t0=performance.now();const step=t=>{const p=Math.min(1,(t-t0)/dur),k=1-Math.pow(1-p,3);els.forEach((e,i)=>{e.textContent=Math.round(from[i]+(+e.dataset.to-from[i])*k)});if(p<1)requestAnimationFrame(step)};
+  requestAnimationFrame(step);
+}
+function setAccent(){const r=document.documentElement;if(filter==="all"){["--accent","--accent2","--accentbar"].forEach(k=>r.style.removeProperty(k))}else{const c=`var(${WHO[filter].c})`,c2=`var(${WHO[filter].c2||WHO[filter].c})`;r.style.setProperty("--accent",c);r.style.setProperty("--accent2",c2);r.style.setProperty("--accentbar",`linear-gradient(90deg,${c} 0 50%,${c2} 50% 100%)`)}}
 function renderStats(){
   const list=ALL.filter(s=>visible(s.tour));
   const cities=new Set(list.map(s=>s.city)), countries=new Set(list.map(s=>CITY[s.city][1]));
   const tours=TOURS.filter(visible).length;
   $("#stats").innerHTML=[[tours,LG("巡演／Fan-Con","Tours / Fan-Cons")],[list.length,LG("場次","Shows")],[cities.size,LG("城市","Cities")],[countries.size,LG("國家／地區","Countries / regions")]]
-    .map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
+    .map(([n,l])=>`<div class="stat"><b data-to="${n}">${n}</b><span>${l}</span></div>`).join("");
+  countUp($("#stats"));
   renderArtistDonut();
 }
 
@@ -908,7 +1070,7 @@ document.getElementById("closeall").onclick=()=>TOURS.forEach(t=>setOpen(t.id,fa
 /* ---------- city aggregation ---------- */
 function cityAgg(){
   const m=new Map();
-  ALL.filter(s=>visible(s.tour)).forEach(s=>{
+  ALL.filter(s=>visible(s.tour)&&(!playTo||s.date<=playTo)).forEach(s=>{
     const c=m.get(s.city)||{name:s.city,shows:[],whos:new Set()};
     c.shows.push(s);c.whos.add(s.tour.who);m.set(s.city,c);
   });
@@ -986,7 +1148,7 @@ function drawMap(){
   const pts=[...agg.values()].map(c=>{const [x,y]=projection([CITY[c.name][3],CITY[c.name][2]]);return {...c,x,y}})
     .filter(p=>p.x>-20&&p.x<W+20&&p.y>-20&&p.y<H+20).sort((a,b)=>b.shows.length-a.shows.length);
   const g=gPins.selectAll("g.pin").data(pts,d=>d.name).join(enter=>{
-    const e=enter.append("g").attr("class","pin").attr("tabindex",0).attr("role","button");
+    const e=enter.append("g").attr("class","pin"+(playTo?" born":"")).attr("tabindex",0).attr("role","button");
     e.append("circle").attr("class","hit").attr("fill","transparent");e.append("circle").attr("class","halo");e.append("circle").attr("class","core");e.append("text");return e;});
   g.classed("sel",d=>d.name===selected)
    .attr("aria-label",d=>LG(`${d.name}，${d.shows.length} 場`,`${CN(d.name)}, ${NU(d.shows.length,"","show")}`))
@@ -1061,8 +1223,24 @@ function selectCity(name){
   if(!inRegion(name)){region="world";syncRegion();svg.call(zoom.transform,d3.zoomIdentity)}
   drawMap();
 }
+/* playback: light up the map show by show */
+let playT=0;
+function stopPlay(){clearTimeout(playT);playT=0;playTo=null;const b=$("#mplay");b.setAttribute("aria-pressed","false");b.textContent=LG("▶ 播放","▶ Play");$("#mplab").hidden=true;drawMap()}
+function startPlay(){
+  const iso=todayIso(),dates=[...new Set(ALL.filter(s=>visible(s.tour)&&s.date<=iso).map(s=>s.date))].sort();if(!dates.length)return;
+  selected=null;country=null;const b=$("#mplay");b.setAttribute("aria-pressed","true");b.textContent=LG("■ 停止","■ Stop");
+  const lab=$("#mplab");lab.hidden=false;let i=0;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const step=()=>{playTo=dates[i];const sh=ALL.filter(s=>visible(s.tour)&&s.date===playTo);
+    lab.innerHTML=`<b>${playTo.slice(0,4)}</b><span>${fmt(playTo).slice(5)} · ${esc(sh[0].tour.name)} · ${esc(CN(sh[0].city))}</span><small>${LG(`第 ${ALL.filter(s=>visible(s.tour)&&s.date<=playTo).length} 場`,`Show ${ALL.filter(s=>visible(s.tour)&&s.date<=playTo).length}`)}</small>`;
+    drawMap();i++;
+    if(i<dates.length)playT=setTimeout(step,reduce?40:(dates[i].slice(0,4)!==playTo.slice(0,4)?550:110));
+    else playT=setTimeout(()=>{playT=0;const b=$("#mplay");b.setAttribute("aria-pressed","false");b.textContent=LG("↻ 重播","↻ Replay");playTo=null;drawMap();setTimeout(()=>{if(!playT)lab.hidden=true},2500)},900)};
+  step();
+}
+$("#mplay").onclick=()=>playT?stopPlay():startPlay();
 function syncRegion(){document.querySelectorAll(".maptools button[data-r]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.r===region))}
-document.querySelectorAll(".maptools button[data-r]").forEach(b=>b.onclick=()=>{region=b.dataset.r;country=null;selected=null;syncRegion();svg.call(zoom.transform,d3.zoomIdentity);drawMap()});
+document.querySelectorAll(".maptools button[data-r]").forEach(b=>b.onclick=()=>{if(playT){clearTimeout(playT);playT=0;playTo=null;$("#mplab").hidden=true;$("#mplay").setAttribute("aria-pressed","false");$("#mplay").textContent=LG("▶ 播放","▶ Play")}region=b.dataset.r;country=null;selected=null;syncRegion();svg.call(zoom.transform,d3.zoomIdentity);drawMap()});
 
 
 /* ---------- albums ---------- */
@@ -1189,6 +1367,8 @@ document.querySelectorAll('[data-av]').forEach(b=>b.onclick=()=>{albView=b.datas
 document.querySelectorAll('[data-wm]').forEach(b=>b.onclick=()=>{albWM=b.dataset.wm;document.querySelectorAll('[data-wm]').forEach(x=>x.setAttribute("aria-pressed",x===b));renderAlbums()});
 
 function applyFilter(){
+  if(typeof playT!=="undefined"&&playT){clearTimeout(playT);playT=0;playTo=null;const lb=document.getElementById("mplab");if(lb)lb.hidden=true;const pb=document.getElementById("mplay");if(pb){pb.setAttribute("aria-pressed","false");pb.textContent=LG("▶ 播放","▶ Play")}}
+  setAccent();
   document.querySelectorAll("[data-tid]").forEach(el=>el.hidden=!visible(TOURS.find(t=>t.id===el.dataset.tid)));
   renderStats();renderNext();drawTimeline();drawMap();if(!$("#view-cmp").hidden)renderCmp();if(!$("#view-ana").hidden)renderAna();if(!$("#view-songs").hidden)renderAlbums();if(!$("#view-sig").hidden)renderSig();
 }
@@ -1328,7 +1508,18 @@ function drawTimeline(){
 }
 
 /* ---------- next show countdown ---------- */
-function renderNext(){
+function renderOTD(){
+  const el=$("#otd"),iso=todayIso(),y=+iso.slice(0,4),base=new Date(iso+"T00:00:00");
+  let hits=[],off=0;
+  for(off=0;off<7&&!hits.length;off++){const d=new Date(base.getTime()+off*864e5),md=`${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+    hits=ALL.filter(s=>visible(s.tour)&&s.date.slice(5)===md&&s.date<iso).sort((a,b)=>a.date.localeCompare(b.date))}
+  off--;
+  if(!hits.length){el.hidden=true;return}
+  el.hidden=false;
+  const lbl=off===0?LG("歷史上的今天","On this day"):off===1?LG("明天是紀念日","Tomorrow in RV history"):LG(`${off} 天後是紀念日`,`In ${off} days, in RV history`);
+  el.innerHTML=`<span class="lbl">${lbl}</span><span class="otdl">${hits.map(s=>{const ago=y-+s.date.slice(0,4);return `<a href="#${s.tour.id}" data-otd="${s.tour.id}"><b>${off===0?LG(`${ago} 年前`,`${ago} ${ago===1?"year":"years"} ago`):LG(`${ago} 週年`,`${ago}-year anniversary`)}</b> ${fmt(s.date)} · <span class="dot" style="background:${whoBg(s.tour.who)};margin-right:4px"></span>${esc(s.tour.name)} · ${esc(CN(s.city))}</a>`}).join("")}</span>`;
+}
+function renderNext(){renderOTD();
   const today=new Date();const iso=new Date(today.getTime()-today.getTimezoneOffset()*6e4).toISOString().slice(0,10);
   const up=ALL.filter(s=>s.date>=iso&&visible(s.tour)).sort((a,b)=>a.date.localeCompare(b.date));
   const el=$("#next");if(!up.length){el.hidden=true;return}
@@ -1589,12 +1780,241 @@ function renderCarry(){
   $("#carry").innerHTML=html||`<p class="hint">${LG("目前篩選範圍內沒有個人或小分隊演出","No unit or solo shows in the current filter")}</p>`;
   bindSongBtns($("#carry"));
 }
+
+/* ---------- play: my shows + higher/lower ---------- */
+const SITE="https://confetticon.github.io/rv-concerts/";
+const todayIso=()=>{const d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
+const showId=s=>`${s.tour.id}|${s.date}|${s.city}`;
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let mine=new Set(store.get("rvMine",[]));
+let _GC=null;
+function globalCounts(){ /* every performed show, all lineups */
+  if(_GC)return _GC;const iso=todayIso(),m=new Map();
+  ALL.filter(s=>s.date<=iso).forEach(s=>showSeq(s.tour,s.date,s.city).forEach(o=>{const e=m.get(o.k)||{k:o.k,t:o.t,x:o.x,n:0,first:s.date,fs:s};if(!e.x&&o.x)e.x=o.x;e.n++;if(s.date<e.first){e.first=s.date;e.fs=s}m.set(o.k,e)}));
+  return _GC=m;
+}
+/* songs that share a title with another song (e.g. Joy's cover of Utada's "Automatic") get their note added */
+let _DUP=null;
+function gT(k,t){const gc=globalCounts();if(!_DUP){const m=new Map();gc.forEach(e=>{const n=norm(e.t);m.set(n,(m.get(n)||0)+1)});_DUP=m}
+  const e=gc.get(k);if(!e||(_DUP.get(norm(t))||0)<2)return SN(t);
+  return SN(t)+(LANG==="en"?" ":"")+BR(e.x?TR(e.x):WHO[e.fs.tour.who].zh);}
+function mineShows(){return ALL.filter(s=>mine.has(showId(s))).sort((a,b)=>a.date.localeCompare(b.date))}
+function mineStats(){
+  const sh=mineShows(),songs=new Map();
+  sh.forEach(s=>showSeq(s.tour,s.date,s.city).forEach(o=>{const e=songs.get(o.k)||{k:o.k,t:o.t,n:0};e.n++;songs.set(o.k,e)}));
+  const gc=globalCounts();
+  const top=[...songs.values()].sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t)).slice(0,5);
+  const rare=[...songs.values()].map(e=>({...e,g:(gc.get(e.k)||{n:0}).n})).filter(e=>e.g>0).sort((a,b)=>a.g-b.g||a.t.localeCompare(b.t)).slice(0,3);
+  const RARE_N=3,rareN=[...songs.values()].filter(e=>{const g=(gc.get(e.k)||{n:99}).n;return g<=RARE_N}).length;
+  const span=sh.length?+sh[sh.length-1].date.slice(0,4)-+sh[0].date.slice(0,4)+1:0;
+  return {sh,songs,top,rare,rareN,RARE_N,span,cities:new Set(sh.map(s=>s.city)),ctry:new Set(sh.map(s=>CITY[s.city][1])),tours:new Set(sh.map(s=>s.tour.id))};
+}
+let meOpen=new Set();
+function renderMe(){
+  const el=$("#p-me"),iso=todayIso(),st=mineStats();
+  const groups=TOURS.map(t=>({t,rows:ALL.filter(s=>s.tour===t)})).filter(g=>g.rows.length);
+  el.innerHTML=`<div class="sechead"><h2 class="sec" id="meh">${LG("我的演唱會足跡","My concert footprint")}</h2><span class="hint">${LG("勾選你去過的場次，產生你的足跡卡","Tick the shows you went to and get your own card")}</span></div>
+  <p class="hint" style="margin:0">${LG("勾選紀錄只存在你這台裝置的瀏覽器裡，不會上傳到任何地方。","Your picks stay in this browser on this device. Nothing is uploaded.")}</p>
+  <div class="mestats" title="">${[[st.sh.length,LG("場","shows")],[st.cities.size,LG("個城市","cities")],[st.ctry.size,LG("個國家／地區","countries / regions")],[st.span,LG("年的陪伴","years of shows")],...(st.rareN?[[st.rareN,LG("首稀有歌","rare songs heard")]]:[])].map(([n,l])=>`<div><b>${n}</b><span>${l}</span></div>`).join("")}</div>
+  ${st.rareN?`<p class="hint" style="margin:0">${LG(`稀有歌：在本頁所有演出中只唱過 ${st.RARE_N} 場以下的歌。`,`Rare songs: songs performed at ${st.RARE_N} shows or fewer across this whole archive.`)}</p>`:""}
+  ${st.sh.length?`<div class="meres">
+    <div class="rk"><h4>${LG("你最常聽到的歌","Songs you heard most")}</h4><ol>${st.top.map(e=>`<li>${songBtn(e.k,e.t)}<span>${NU(e.n,"次","time")}</span></li>`).join("")}</ol></div>
+    <div class="rk"><h4>${LG("你聽過最稀有的歌","Rarest songs you heard")}</h4><ol>${st.rare.map(e=>`<li>${songBtn(e.k,e.t)}<span>${LG(`全部只唱 ${e.g} 場`,`${NU(e.g,"","show")} ever`)}</span></li>`).join("")}</ol></div>
+  </div>`:""}
+  <div class="meact"><button type="button" class="btn pri" id="mecardb"${st.sh.length?"":" disabled"}>${LG("產生足跡卡","Make my card")}</button>${st.sh.length?`<button type="button" class="btn" id="meclr">${LG("全部清除","Clear all")}</button>`:""}</div>
+  <div class="mecard" id="mecard" hidden></div>
+  <div class="mepick">${groups.map(({t,rows})=>{const n=rows.filter(s=>mine.has(showId(s))).length;
+    return `<details data-t="${t.id}"${meOpen.has(t.id)?" open":""}><summary><span class="sw" style="background:${whoBg(t.who)}"></span><span><b>${esc(t.name)}</b><small>${esc(t.yrs)} · ${esc(WHO[t.who].zh)}</small></span><span class="cnt${n?" on":""}">${n?`${n}／${rows.length}`:NU(rows.length,"場","show")}</span></summary>
+      <ul>${rows.map(s=>{const id=showId(s),fut=s.date>iso;return `<li class="${fut?"fut":""}"><label><input type="checkbox" data-id="${esc(id)}"${mine.has(id)?" checked":""}${fut?" disabled":""}><span class="d">${fmt(s.date)}</span><span>${esc(CN(s.city))} <span class="v">${fut?LG("（尚未舉行）"," (upcoming)"):"· "+esc(TR(s.venue))}</span></span></label></li>`}).join("")}</ul></details>`}).join("")}</div>`;
+  el.querySelectorAll(".mepick details").forEach(d=>d.addEventListener("toggle",()=>{d.open?meOpen.add(d.dataset.t):meOpen.delete(d.dataset.t)}));
+  el.querySelectorAll(".mepick input").forEach(c=>c.onchange=()=>{c.checked?mine.add(c.dataset.id):mine.delete(c.dataset.id);store.set("rvMine",[...mine]);const y=window.scrollY;renderMe();window.scrollTo(0,y)});
+  const clr=$("#meclr");if(clr)clr.onclick=()=>{if(!confirmClear())return;mine.clear();store.set("rvMine",[]);renderMe()};
+  $("#mecardb").onclick=makeCard;
+  bindSongBtns(el);
+}
+let clrArm=0;
+function confirmClear(){const b=$("#meclr");if(Date.now()<clrArm)return true;clrArm=Date.now()+3000;b.textContent=LG("再按一次確認清除","Tap again to clear");setTimeout(()=>{if(b.isConnected)b.textContent=LG("全部清除","Clear all")},3000);return false}
+
+async function makeCard(){
+  const st=mineStats();if(!st.sh.length)return;
+  try{if(document.fonts&&document.fonts.ready)await document.fonts.ready}catch(e){}
+  const Wc=1080,Hc=1350,c=document.createElement("canvas");c.width=Wc;c.height=Hc;const x=c.getContext("2d");
+  const F=(w,sz)=>`${w} ${sz}px "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif`;
+  const CREAM="#fbefe6",CORAL="#ffa38b",MUTE="rgba(251,239,230,.66)";
+  const g=x.createLinearGradient(0,0,Wc,Hc);g.addColorStop(0,"#7a1734");g.addColorStop(1,"#3a0d20");x.fillStyle=g;x.fillRect(0,0,Wc,Hc);
+  const P=72;
+  x.fillStyle=MUTE;x.font=F(500,26);x.fillText("RED VELVET CONCERT ARCHIVE",P,108);
+  x.fillStyle=CREAM;x.font=F(700,64);x.fillText(LG("我的演唱會足跡","My Red Velvet concerts"),P,188);
+  const yrs=[st.sh[0].date.slice(0,4),st.sh[st.sh.length-1].date.slice(0,4)];
+  x.fillStyle=MUTE;x.font=F(400,28);x.fillText(yrs[0]===yrs[1]?yrs[0]:`${yrs[0]} – ${yrs[1]}`,P,236);
+  const span=+yrs[1]-+yrs[0]+1;const nums=[[st.sh.length,LG("場","shows")],[st.cities.size,LG("城市","cities")],st.rareN?[st.rareN,LG("首稀有歌","rare songs")]:[span,LG("年","years")]];
+  nums.forEach(([n,l],i)=>{const cx=P+i*312;x.fillStyle=CORAL;x.font=F(700,104);x.fillText(String(n),cx,362);x.fillStyle=CREAM;x.font=F(500,30);x.fillText(l,cx,406)});
+  /* map */
+  const mx=P,my=446,mw=Wc-2*P,mh=420;
+  x.save();x.beginPath();x.roundRect?x.roundRect(mx,my,mw,mh,24):x.rect(mx,my,mw,mh);x.fillStyle="rgba(0,0,0,.18)";x.fill();x.clip();
+  const pts=[...st.cities].map(n=>[CITY[n][3],CITY[n][2]]);
+  let lo0=Math.min(...pts.map(p=>p[0])),lo1=Math.max(...pts.map(p=>p[0])),la0=Math.min(...pts.map(p=>p[1])),la1=Math.max(...pts.map(p=>p[1]));
+  let proj;
+  if(lo1-lo0>120){proj=d3.geoNaturalEarth1().fitExtent([[mx+10,my+10],[mx+mw-10,my+mh-10]],{type:"Sphere"})}
+  else{const padLo=Math.max(6,(lo1-lo0)*.25),padLa=Math.max(5,(la1-la0)*.25);const cxl=(lo0+lo1)/2,cyl=(la0+la1)/2,hl=Math.max((lo1-lo0)/2+padLo,14),hb=Math.max((la1-la0)/2+padLa,8);
+    proj=d3.geoMercator().fitExtent([[mx+30,my+30],[mx+mw-30,my+mh-30]],{type:"MultiPoint",coordinates:[[cxl-hl,cyl-hb],[cxl+hl,cyl+hb]]})}
+  const pth=d3.geoPath(proj,x);
+  const on=new Set([...st.ctry].map(k=>COUNTRY_TOPO[k]).filter(Boolean));
+  countries.forEach(f=>{x.beginPath();pth(f);x.fillStyle=on.has(f.properties.name)?"rgba(255,163,139,.38)":"rgba(251,239,230,.14)";x.fill();x.strokeStyle="rgba(58,13,32,.7)";x.lineWidth=1;x.stroke()});
+  const byCity=new Map();st.sh.forEach(s=>byCity.set(s.city,(byCity.get(s.city)||0)+1));
+  const placed=[];
+  [...byCity.entries()].sort((a,b)=>b[1]-a[1]).forEach(([n,k])=>{const [px,py]=proj([CITY[n][3],CITY[n][2]]);const r=9+Math.sqrt(k)*5;
+    x.beginPath();x.arc(px,py,r+4,0,Math.PI*2);x.fillStyle="rgba(255,163,139,.28)";x.fill();
+    x.beginPath();x.arc(px,py,r,0,Math.PI*2);x.fillStyle=CORAL;x.fill();x.lineWidth=3;x.strokeStyle=CREAM;x.stroke();
+    x.font=F(700,26);const tw=x.measureText(CN(n)).width;
+    const cand=[[px+r+10,py+9],[px-r-10-tw,py+9],[px-tw/2,py-r-12],[px-tw/2,py+r+30]];
+    const box=([lx,ly])=>[lx-4,ly-26,lx+tw+4,ly+6];const hit=(a,b)=>a[0]<b[2]&&a[2]>b[0]&&a[1]<b[3]&&a[3]>b[1];
+    const ok=cand.find(cd=>{const b=box(cd);return b[0]>mx&&b[2]<mx+mw&&b[1]>my&&b[3]<my+mh&&!placed.some(q=>hit(b,q))});
+    placed.push([px-r,py-r,px+r,py+r]);
+    if(ok){placed.push(box(ok));x.lineWidth=6;x.strokeStyle="rgba(58,13,32,.85)";x.strokeText(CN(n),ok[0],ok[1]);x.fillStyle=CREAM;x.fillText(CN(n),ok[0],ok[1])}});
+  x.restore();
+  /* list */
+  const clip=(t,w)=>{if(x.measureText(t).width<=w)return t;while(t.length&&x.measureText(t+"…").width>w)t=t.slice(0,-1);return t+"…"};
+  let y=930;const maxL=st.top.length?6:8,list=st.sh.length>maxL?st.sh.slice(-maxL):st.sh;
+  x.fillStyle=MUTE;x.font=F(500,24);x.fillText(st.sh.length>maxL?LG(`最近 ${maxL} 場（共 ${st.sh.length} 場）`,`Latest ${maxL} of ${st.sh.length} shows`):LG("去過的場次","Shows"),P,y);y+=46;
+  list.forEach(s=>{x.font=F(500,26);x.fillStyle=CORAL;x.fillText(fmt(s.date),P,y);x.fillStyle=CREAM;x.font=F(400,28);x.fillText(clip(`${s.tour.name} · ${CN(s.city)}`,Wc-2*P-190),P+190,y);y+=42});
+  if(st.top.length){y+=12;x.fillStyle=MUTE;x.font=F(500,24);x.fillText(LG("最常聽到","Heard most"),P,y);x.fillStyle=CREAM;x.font=F(700,32);
+    x.fillText(clip(`${SN(st.top[0].t)}  ×${st.top[0].n}`,Wc-2*P-190),P+190,y)}
+  x.fillStyle=MUTE;x.font=F(500,24);x.fillText(SITE.replace("https://",""),P,Hc-56);
+  x.fillStyle=CORAL;x.beginPath();x.arc(Wc-P-10,Hc-64,10,0,Math.PI*2);x.fill();
+  const blob=await new Promise(r=>c.toBlob(r,"image/png"));const url=URL.createObjectURL(blob);
+  const fn="rv-my-concerts.png",file=new File([blob],fn,{type:"image/png"});
+  const canShare=navigator.canShare&&navigator.canShare({files:[file]});
+  const box=$("#mecard");box.hidden=false;
+  box.innerHTML=`<img src="${url}" alt="${esc(LG("我的演唱會足跡卡","My concert footprint card"))}"><div class="meact"><a class="btn pri" href="${url}" download="${fn}" style="text-decoration:none">${LG("下載圖片","Download image")}</a>${canShare?`<button type="button" class="btn" id="meshare">${LG("分享","Share")}</button>`:""}<a class="btn" style="text-decoration:none" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(LG(`我去過 ${st.sh.length} 場 Red Velvet 演唱會、${st.cities.size} 個城市 🎤`,`I've been to ${st.sh.length} Red Velvet ${st.sh.length===1?"show":"shows"} in ${st.cities.size} ${st.cities.size===1?"city":"cities"} 🎤`)+" "+SITE+"#play")}">${LG("發到 X","Post on X")}</a></div><p class="hint" style="margin:0">${LG("發到 X 時，先下載圖片再附上。","When posting on X, download the image first and attach it.")}</p>`;
+  const sb=$("#meshare");if(sb)sb.onclick=()=>navigator.share({files:[file],text:SITE+"#play"}).catch(()=>{});
+  box.scrollIntoView({block:"nearest",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+
+/* games: mixed challenge + single types; difficulty rises with the streak */
+const GTYPES={hl:["哪首唱得比較多","Higher or lower"],yr:["猜首唱年份","Guess the year"],tour:["看歌猜巡演","Guess the tour"],open:["猜開場曲","Opening song"],city:["沒去過的城市","Missing city"]};
+const GMODES=[["mix","混合挑戰","Mixed challenge"],...Object.entries(GTYPES).map(([k,v])=>[k,...v])];
+let GMODE=store.get("rvGMode","mix");if(!GMODES.some(m=>m[0]===GMODE))GMODE="mix";
+const bestKey=m=>m==="hl"?"rvBest":"rvBest_"+m;
+let GM={mode:GMODE,q:null,pick:null,score:0,best:store.get(bestKey(GMODE),0),state:"play",last:null,lastType:null};
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const lvl=()=>Math.min(3,Math.floor(GM.score/3));
+let _TC=null;
+function tourCounts(){if(_TC)return _TC;const m=new Map(),iso=todayIso();ALL.filter(s=>s.date<=iso).forEach(s=>showSeq(s.tour,s.date,s.city).forEach(o=>{const e=m.get(o.k)||new Set();e.add(s.tour.id);m.set(o.k,e)}));return _TC=m}
+const pastTours=()=>{const iso=todayIso();return TOURS.filter(t=>ALL.some(s=>s.tour===t&&s.date<=iso))};
+const pastShows=t=>{const iso=todayIso();return ALL.filter(s=>s.tour===t&&s.date<=iso)};
+const yrOf=t=>+String(t.yrs).slice(0,4);
+function nearTours(t,n){ /* distractors: same lineup / nearby years first when harder */
+  const others=pastTours().filter(x=>x!==t);
+  if(lvl()<1)return shuffle(others).slice(0,n);
+  return others.map(x=>({x,d:Math.abs(yrOf(x)-yrOf(t))+(x.who===t.who?0:3)+Math.random()*2})).sort((a,b)=>a.d-b.d).slice(0,n).map(o=>o.x);
+}
+/* games use only songs released by Red Velvet or a member: no covers */
+const NOT_OWN=new Set(["babyshark"]);
+const isOwn=k=>{const e=globalCounts().get(k);return !!e&&!NOT_OWN.has(k)&&!/翻唱|cover/i.test(e.x||"")};
+const gPool=()=>[...globalCounts().values()].filter(e=>isOwn(e.k));
+function pickHL(a){const pool=gPool(),L=lvl();let b,i=0;
+  const ok=b=>{if(!b||b.k===a.k||b.n===a.n)return false;const d=Math.abs(b.n-a.n);
+    if(L===0)return d>=3;const lim=L===1?Math.max(4,Math.round(a.n*.4)):L===2?Math.max(3,Math.round(a.n*.2)):Math.max(2,Math.round(a.n*.1));return d<=lim};
+  do{b=rnd(pool);i++}while(i<400&&!ok(b));if(!ok(b)){do{b=rnd(pool)}while(b.k===a.k||b.n===a.n)}return b}
+function makeQ(type,prev){
+  const iso=todayIso(),L=lvl(),gc=globalCounts();
+  if(type==="hl"){const a=prev&&prev.type==="hl"&&GM.mode==="hl"?prev.b:rnd(gPool());return {type,a,b:pickHL(a)}}
+  if(type==="yr"){
+    const pool=gPool().filter(e=>L<2||e.n>=2);const e=rnd(pool),y=+e.first.slice(0,4),maxY=+iso.slice(0,4);
+    let lo=y-Math.floor(Math.random()*4);lo=Math.max(2017,Math.min(lo,maxY-3));
+    return {type,song:e,ans:String(y),opts:[0,1,2,3].map(d=>String(lo+d)),info:`${fmt(e.first)} ${e.fs.tour.name}・${CN(e.fs.city)}`};
+  }
+  if(type==="tour"){
+    const t=rnd(pastTours()),show=rnd(pastShows(t)),tc=tourCounts();
+    const seq=showSeq(t,show.date,show.city).filter(o=>isOwn(o.k));
+    let cand=L>=2?seq.filter(o=>(tc.get(o.k)||{size:1}).size>=2):seq.slice().sort((a,b)=>(tc.get(a.k)||{size:9}).size-(tc.get(b.k)||{size:9}).size).slice(0,8);
+    if(cand.length<4)cand=seq;
+    const songs=shuffle(cand).slice(0,L>=3?3:4);
+    return {type,songs,ans:t.id,opts:shuffle([t,...nearTours(t,3)]).map(x=>x.id),info:`${fmt(show.date)} ${CN(show.city)}`};
+  }
+  if(type==="open"){
+    let t,show,seq,tries=0;do{t=rnd(pastTours());show=pastShows(t)[0];seq=showSeq(t,show.date,show.city).filter(o=>o.ph==="main");tries++}while(tries<30&&!isOwn(seq[0].k));
+    const first=seq[0];const rest=seq.slice(1).filter(o=>isOwn(o.k));
+    const pool=L>=2?rest.slice(0,5):rest;const wrong=shuffle(pool.filter(o=>o.k!==first.k)).slice(0,3);
+    return {type,tour:t,show,ans:first.k,opts:shuffle([first,...wrong]).map(o=>o.k),lab:Object.fromEntries([first,...wrong].map(o=>[o.k,o.t])),info:`${fmt(show.date)} ${CN(show.city)}`};
+  }
+  /* city: which city did this tour NOT visit */
+  const ts=pastTours().filter(t=>new Set(pastShows(t).map(s=>s.city)).size>=3);
+  const t=rnd(ts),vis=[...new Set(pastShows(t).map(s=>s.city))];
+  const allC=[...new Set(ALL.filter(s=>s.date<=iso).map(s=>s.city))].filter(c=>!vis.includes(c));
+  const ctry=new Set(vis.map(c=>CITY[c][1]));
+  const near=L>=1?allC.filter(c=>ctry.has(CITY[c][1])):[];
+  const miss=rnd(near.length?near:allC);
+  return {type,tour:t,ans:miss,opts:shuffle([miss,...shuffle(vis).slice(0,3)]),vis};
+}
+function nextType(){if(GM.mode!=="mix")return GM.mode;const ks=Object.keys(GTYPES).filter(k=>k!==GM.lastType);return rnd(ks)}
+function newQ(){const t=nextType();GM.q=makeQ(t,GM.q);GM.lastType=t;GM.pick=null;GM.state="play"}
+function gStart(){GM.score=0;GM.last=null;GM.q=null;GM.lastType=null;newQ();renderGame()}
+function setMode(m){GM.mode=m;GMODE=m;store.set("rvGMode",m);GM.best=store.get(bestKey(m),0);gStart()}
+function gCard(e,reveal,cls){return `<div class="gcard ${cls||""}"><span class="gs">${esc(gT(e.k,e.t))}</span><span class="gm">${LG("首次現場","First live")} ${e.first.slice(0,4)}</span>${reveal?`<span class="gn${reveal==="anim"?" anim":""}" data-n="${e.n}">${reveal==="anim"?0:e.n}<small>${LG("場","shows")}</small></span>`:`<span class="gm">${LG("演唱場數比左邊……","Performed at…")}</span><div class="gbtns"><button type="button" data-g="hi">${LG("更多 ▲","More ▲")}</button><button type="button" class="lo" data-g="lo">${LG("更少 ▼","Fewer ▼")}</button></div>`}</div>`}
+const tName=id=>{const t=TOURS.find(x=>x.id===id);return t?t.name:id};
+function optLabel(q,v){
+  if(q.type==="yr")return esc(v);
+  if(q.type==="tour"){const t=TOURS.find(x=>x.id===v);return `<b>${esc(t.name)}</b><small>${esc(t.yrs)} · ${esc(WHO[t.who].zh)}</small>`}
+  if(q.type==="open")return esc(gT(v,q.lab[v]));
+  return `<b>${esc(CN(v))}</b><small>${esc(CTRY(CITY[v][1]))}</small>`;
+}
+function quizBody(){
+  const q=GM.q,done=GM.state!=="play";let prompt;
+  if(q.type==="yr")prompt=`<span class="gm">${LG("這首歌第一次在演唱會現場演出是哪一年？","Which year was this song first performed live?")}</span><span class="gs">${esc(gT(q.song.k,q.song.t))}</span>${done?`<span class="gm">${LG("首唱","First live")}：${esc(q.info)}</span>`:""}`;
+  else if(q.type==="tour")prompt=`<span class="gm">${LG(`這 ${q.songs.length} 首歌出自同一場演出，是哪個巡演？`,`These ${q.songs.length} songs come from one show. Which tour?`)}</span><ul class="qsongs">${q.songs.map(o=>`<li>${esc(gT(o.k,o.t))}</li>`).join("")}</ul>${done?`<span class="gm">${esc(tName(q.ans))} · ${esc(q.info)}</span>`:""}`;
+  else if(q.type==="open")prompt=`<span class="gm">${LG("這個巡演首場的第一首歌是？","What was the opening song of this tour's first show?")}</span><span class="gs">${esc(q.tour.name)}</span><span class="gm">${esc(q.info)}</span>`;
+  else prompt=`<span class="gm">${LG("下面哪個城市，這個巡演「沒有」去過？","Which of these cities did this tour NOT visit?")}</span><span class="gs">${esc(q.tour.name)}</span>${done?`<span class="gm">${LG("去過","Visited")}：${esc(q.vis.map(CN).join(SEP()))}</span>`:""}`;
+  const opts=`<div class="qopts">${q.opts.map(v=>{let c="";if(done){if(v===q.ans)c="ok";else if(v===GM.pick)c="ng"}
+    return `<button type="button" class="qo ${c}" data-q="${esc(v)}"${done?" disabled":""}>${optLabel(q,v)}</button>`}).join("")}</div>`;
+  return `<div class="gcard qz ${done?(GM.last?"ok":"ng"):""}">${prompt}</div>`+opts;
+}
+function wrongWhy(){const q=GM.q;
+  if(q.type==="hl")return LG(`${gT(q.b.k,q.b.t)} 唱了 ${q.b.n} 場`,`${gT(q.b.k,q.b.t)} was performed at ${NU(q.b.n,"","show")}`);
+  if(q.type==="yr")return LG(`答案是 ${q.ans} 年`,`The answer was ${q.ans}`);
+  if(q.type==="tour")return LG(`答案是 ${tName(q.ans)}`,`The answer was ${tName(q.ans)}`);
+  if(q.type==="open")return LG(`答案是 ${gT(q.ans,q.lab[q.ans])}`,`The answer was ${gT(q.ans,q.lab[q.ans])}`);
+  return LG(`答案是 ${CN(q.ans)}`,`The answer was ${CN(q.ans)}`);
+}
+function renderGame(){
+  const el=$("#p-game");if(!GM.q){gStart();return}
+  const q=GM.q,mode=GMODES.find(m=>m[0]===GM.mode);
+  const L=lvl(),lvTxt=[LG("暖身","Warm-up"),LG("進階","Tricky"),LG("困難","Hard"),LG("地獄","Brutal")][L];
+  const hint=GM.mode==="mix"?LG("五種題型隨機出題，答對越多題目越難","Five question types at random. The longer your streak, the harder it gets"):LG("答對越多，題目越難","The longer your streak, the harder it gets");
+  const head=`<div class="sechead"><h2 class="sec" id="gmh">${LG("小遊戲","Mini games")}</h2><span class="hint">${hint}</span></div>
+  <div class="chips gmodes" role="group" aria-label="${LG("遊戲模式","Game mode")}">${GMODES.map(([k,z,e])=>`<button type="button" data-mode="${k}" aria-pressed="${k===GM.mode}">${LG(z,e)}</button>`).join("")}</div>
+  <div class="gscore"><span><b>${GM.score}</b>${LG("連續答對","in a row")}</span><span><b>${GM.best}</b>${LG("最佳紀錄","best")}</span><span class="glv lv${L}">${lvTxt}</span>${GM.mode==="mix"?`<span class="gtype">${esc(LG(...GTYPES[q.type]))}</span>`:""}</div>`;
+  let body;
+  if(q.type==="hl")body=`<div class="game">${gCard(q.a,true)}<span class="vs">vs</span>${GM.state==="over"?gCard(q.b,true,"ng"):GM.state==="reveal"?gCard(q.b,"anim",GM.last?"ok pop":"ng pop"):gCard(q.b,false)}</div>`;
+  else body=quizBody();
+  if(GM.state==="over"){
+    const name=LG(mode[1],mode[2]);
+    const txt=LG(`我在 Red Velvet 演唱會小遊戲「${name}」連續答對 ${GM.score} 題 🎤 你能贏我嗎？`,`I got ${GM.score} in a row on the Red Velvet concert quiz (${name}) 🎤 Can you beat me?`);
+    body+=`<div class="gover"><span>${LG("答錯了！","Wrong!")} ${esc(wrongWhy())}</span><span class="big">${GM.score}</span><span class="hint">${GM.score>0&&GM.score>=GM.best?LG("新紀錄！","New best!"):LG(`最佳紀錄 ${GM.best}`,`Best: ${GM.best}`)}</span>
+    <div class="meact" style="justify-content:center"><button type="button" class="btn pri" id="gagain">${LG("再玩一次","Play again")}</button><a class="btn" style="text-decoration:none" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(txt+" "+SITE+"#play")}">${LG("分享成績到 X","Share on X")}</a></div></div>`;
+  }
+  el.innerHTML=head+body+(q.type==="hl"?`<p class="hint" style="margin:0">${LG("場數是頁面上所有已舉行場次的合計，包含團體、小分隊與成員個人演出。","Counts cover every show on this page that has happened, including group, unit and solo shows.")}</p>`:"");
+  el.querySelectorAll("[data-mode]").forEach(b=>b.onclick=()=>{if(b.dataset.mode!==GM.mode)setMode(b.dataset.mode)});
+  el.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>gAnswer(b.dataset.g==="hi"?q.b.n>q.a.n:q.b.n<q.a.n));
+  el.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{GM.pick=b.dataset.q;gAnswer(b.dataset.q===q.ans)});
+  const ag=$("#gagain");if(ag)ag.onclick=gStart;
+  const n=el.querySelector(".gn.anim");if(GM.state==="reveal"&&n){const to=+n.dataset.n,sm=n.querySelector("small").outerHTML;
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches){n.innerHTML=to+sm}else{const t0=performance.now();const step=t=>{const p=Math.min(1,(t-t0)/600);n.innerHTML=Math.round(to*(1-Math.pow(1-p,3)))+sm;if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}}
+}
+let gTimer=0;
+function gAnswer(ok){if(GM.state!=="play")return;
+  GM.last=ok;GM.state="reveal";renderGame();
+  clearTimeout(gTimer);gTimer=setTimeout(()=>{if(ok){GM.score++;if(GM.score>GM.best){GM.best=GM.score;store.set(bestKey(GM.mode),GM.best)}newQ()}else GM.state="over";renderGame()},ok?1100:1500);
+}
+function renderPlay(){renderMe();renderGame()}
 /* ---------- page views ---------- */
 function showView(v,scroll){
   document.querySelectorAll(".ptabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
   {const bar=document.querySelector(".ptabs"),ab=bar.querySelector(`[data-v="${v}"]`);if(ab){const l=ab.offsetLeft,r=l+ab.offsetWidth;if(l<bar.scrollLeft)bar.scrollLeft=l-12;else if(r>bar.scrollLeft+bar.clientWidth)bar.scrollLeft=r-bar.clientWidth+12;}}
-  $("#view-main").hidden=v!=="main";$("#view-songs").hidden=v!=="songs";$("#view-sig").hidden=v!=="sig";$("#view-cmp").hidden=v!=="cmp";$("#view-ana").hidden=v!=="ana";if(v==="ana"){$("#view-ana").style.display="flex"}else{$("#view-ana").style.display=""}
-  if(v==="songs")renderAlbums();if(v==="sig")renderSig();if(v==="cmp")renderCmp();if(v==="ana")renderAna();
+  $("#view-main").hidden=v!=="main";$("#view-songs").hidden=v!=="songs";$("#view-sig").hidden=v!=="sig";$("#view-cmp").hidden=v!=="cmp";$("#view-ana").hidden=v!=="ana";$("#view-play").hidden=v!=="play";document.querySelector(".fbar").hidden=v==="play";if(v==="ana"){$("#view-ana").style.display="flex"}else{$("#view-ana").style.display=""}
+  if(v==="songs")renderAlbums();if(v==="sig")renderSig();if(v==="cmp")renderCmp();if(v==="ana")renderAna();if(v==="play")renderPlay();
   if(v==="main"){drawTimeline();const w=document.getElementById("map").parentElement.clientWidth;if(w&&Math.abs(w-lastW)>=2){lastW=w;sizeMap();drawMap()}}
   $("#abar").hidden=v!=="ana";setTabH();
   if(scroll){const y=Math.round(document.querySelector("header").getBoundingClientRect().bottom+window.scrollY);window.scrollTo({top:y,left:0,behavior:"instant"})}
@@ -1613,7 +2033,7 @@ document.querySelectorAll(".ptabs button").forEach(b=>b.onclick=()=>showView(b.d
 function routeHash(){
   const h=decodeURIComponent(location.hash.slice(1));
   if(h==="en"||h==="zh"){setLang(h);if($("#view-main").hidden)showView("main");return}
-  if(["songs","sig","cmp","ana"].includes(h)){showView(h);return}
+  if(["songs","sig","cmp","ana","play"].includes(h)){showView(h);return}
   if(h.startsWith("a-")){showView("ana");const el=document.getElementById(h);if(el)requestAnimationFrame(()=>el.scrollIntoView());return}
   if(!$("#view-main").hidden&&!h)return;
   showView("main");
@@ -1624,4 +2044,10 @@ window.addEventListener("hashchange",routeHash);
 function setTabH(){const t=document.querySelector(".stickybar");if(t)document.documentElement.style.setProperty("--tabh",t.offsetHeight+"px")}
 setTabH();window.addEventListener("resize",setTabH);
 renderChips();renderIndex();renderTours();applyFilter();routeHash();
+$("#otd").addEventListener("click",e=>{const a=e.target.closest("a[data-otd]");if(!a)return;e.preventDefault();showView("main");openTour(a.dataset.otd)});
+if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion: reduce)").matches){
+  const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io2.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll("#view-main > section,.anasec,#view-songs > section,#view-sig > section,#view-cmp > section").forEach(el=>{const r=el.getBoundingClientRect();if(r.top>innerHeight){el.classList.add("fx");io2.observe(el)}});
+  setTimeout(()=>document.querySelectorAll(".fx:not(.in)").forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add("in")}),1500);
+}
 </script>
