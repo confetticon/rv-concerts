@@ -12,7 +12,7 @@
 <style>
 /* Layout: programme booklet — header + filters, world map with city panel, tour index, one section per tour (dates + setlist tabs), city index */
 :root{
-  --bg:#fbf8f9; --surface:#ffffff; --ink:#22161b; --muted:#65525a; --line:#eadfe3;
+  --bg:#fff7f4; --surface:#ffffff; --ink:#22161b; --muted:#65525a; --line:#eadfe3;
   --red:#b3122e; --velvet:#5a1a3a; --red-soft:#f7e3e7; --velvet-soft:#efe4ec; --cancel:#9a8b91;
   --land:#ece3e7; --land-on:#e8b9c4; --sea:#f6f1f3;
   --c-rv:#ffa38b; --c-irene:#f27fae; --c-seulgi:#f2bd1d; --c-wendy:#3d8fdc; --c-joy:#3fae5a; --c-yeri:#9b6fd0;
@@ -22,14 +22,14 @@
   --head:"Bricolage Grotesque","Chiron GoRound TC","Noto Sans TC","PingFang TC",system-ui,sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#140c10; --surface:#1d1318; --ink:#f3e9ed; --muted:#b39ca6; --line:#35252d;
+  --bg:#2a1519; --surface:#341c21; --ink:#fbeee9; --muted:#c9aab0; --line:#4d2e35;
   --red:#ff5a6e; --velvet:#d59ac0; --red-soft:#3a1720; --velvet-soft:#2e1a28; --cancel:#7d6a72;
-  --land:#2c2027; --land-on:#6a2a3c; --sea:#180f14;
+  --land:#43262c; --land-on:#7a3443; --sea:#23111a;
   --c-rv:#ffa38b; --c-irene:#f59cc1; --c-seulgi:#f7cf55; --c-wendy:#6eaae8; --c-joy:#63c47d; --c-yeri:#b892e0; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#140c10; --surface:#1d1318; --ink:#f3e9ed; --muted:#b39ca6; --line:#35252d;
+  --bg:#2a1519; --surface:#341c21; --ink:#fbeee9; --muted:#c9aab0; --line:#4d2e35;
   --red:#ff5a6e; --velvet:#d59ac0; --red-soft:#3a1720; --velvet-soft:#2e1a28; --cancel:#7d6a72;
-  --land:#2c2027; --land-on:#6a2a3c; --sea:#180f14;
+  --land:#43262c; --land-on:#7a3443; --sea:#23111a;
   --c-rv:#ffa38b; --c-irene:#f59cc1; --c-seulgi:#f7cf55; --c-wendy:#6eaae8; --c-joy:#63c47d; --c-yeri:#b892e0; color-scheme:dark}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -565,11 +565,12 @@ h1 .ca::after{background:linear-gradient(90deg,var(--accent,var(--c-rv)) 0 50%,v
   .idx{transition:border-color .15s,transform .15s}.idx:hover{transform:translateY(-2px)}
 }
 /* ===== livelier look ===== */
-:root{--rainbow:linear-gradient(90deg,var(--c-rv) 0 20%,var(--c-irene) 20% 40%,var(--c-seulgi) 40% 60%,var(--c-wendy) 60% 80%,var(--c-joy) 80% 100%);--r:14px;--shadow:0 1px 2px rgba(60,20,40,.06),0 10px 28px -14px rgba(90,26,58,.28)}
-body{background:radial-gradient(760px 420px at 0% -6%,color-mix(in srgb,var(--c-rv) 26%,transparent),transparent 70%),radial-gradient(620px 380px at 100% 2%,color-mix(in srgb,var(--c-irene) 18%,transparent),transparent 70%),radial-gradient(520px 320px at 55% -4%,color-mix(in srgb,var(--c-seulgi) 14%,transparent),transparent 70%),var(--bg);background-repeat:no-repeat;letter-spacing:.01em}
+:root{--coral-ink:#e5634b;--rainbow:linear-gradient(90deg,var(--c-irene) 0 20%,var(--c-seulgi) 20% 40%,var(--c-wendy) 40% 60%,var(--c-joy) 60% 80%,var(--c-yeri) 80% 100%);--r:14px;--shadow:0 1px 2px rgba(60,20,40,.06),0 10px 28px -14px rgba(90,26,58,.28)}
+body{background:radial-gradient(820px 460px at 0% -6%,color-mix(in srgb,var(--c-rv) 34%,transparent),transparent 70%),radial-gradient(640px 400px at 100% 0%,color-mix(in srgb,var(--c-rv) 22%,transparent),transparent 70%),radial-gradient(520px 320px at 55% -4%,color-mix(in srgb,var(--c-irene) 12%,transparent),transparent 70%),var(--bg);background-repeat:no-repeat;letter-spacing:.01em}
 h1{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:.92}
-h1 .r{color:var(--red)}
-h1 .v{font-style:normal;font-weight:800;color:var(--velvet)}
+h1 .r,h1 .v{color:var(--coral-ink);font-style:normal;font-weight:800}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--coral-ink:#ffa38b}}
+:root[data-theme="dark"]{--coral-ink:#ffa38b}
 h1 .ca{font-weight:600;letter-spacing:-.03em;font-size:.78em;display:inline-block;margin-top:.12em}
 h1 .ca::after{background:var(--accentbar,var(--rainbow));width:3.2em;height:7px;border-radius:99px}
 .kicker{letter-spacing:.2em}
@@ -615,7 +616,7 @@ ol.sl li.seg{font-family:var(--display);font-weight:800;letter-spacing:.06em}
 .gmodes{gap:6px}
 @media (prefers-reduced-motion:no-preference){
   .glv{animation:gl .4s ease}@keyframes gl{from{transform:scale(.7);opacity:0}}
-  h1 .ca::after{background-size:200% 100%;animation:rb 1.2s ease-out}@keyframes rb{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+  h1 .ca::after{animation:rb 1.2s ease-out}@keyframes rb{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
   .mapbox,.tlwrap,.alb,.rk,.kvc,.gcard{transition:transform .2s ease,box-shadow .2s ease}
   .alb:hover,.rk:hover,.kvc:hover{transform:translateY(-2px)}
 }
