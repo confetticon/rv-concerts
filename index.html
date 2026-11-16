@@ -14,7 +14,7 @@
 :root{
   --bg:#fff7f4; --surface:#ffffff; --ink:#22161b; --muted:#65525a; --line:#eadfe3;
   --red:#b3122e; --velvet:#5a1a3a; --red-soft:#f7e3e7; --velvet-soft:#efe4ec; --cancel:#9a8b91;
-  --land:#ece3e7; --land-on:#e8b9c4; --sea:#f6f1f3;
+  --land:#f0d8d2; --land-on:#e8b9c4; --sea:#fdf6f4;
   --c-rv:#ffa38b; --c-irene:#f27fae; --c-seulgi:#f2bd1d; --c-wendy:#3d8fdc; --c-joy:#3fae5a; --c-yeri:#9b6fd0;
   --display:"Bricolage Grotesque","Chiron GoRound TC","Noto Sans TC",system-ui,sans-serif;
   --body:"Chiron GoRound TC","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
@@ -1089,6 +1089,8 @@ let W=960,H=540;
 const NARROW=()=>document.getElementById("map").parentElement.clientWidth<640;
 const svg=d3.select("#map");
 const countries=topojson.feature(WORLD,WORLD.objects.countries).features.filter(f=>f.properties.name!=="Antarctica");
+/* the map draws land as one shape: no borders, no country shading, so it takes no position on disputed borders */
+const LAND=topojson.merge(WORLD,WORLD.objects.countries.geometries.filter(g=>g.properties.name!=="Antarctica"));
 const bgRect=svg.append("rect").attr("width",W).attr("height",H).attr("fill","transparent");
 const gZoom=svg.append("g"), gLand=gZoom.append("g"), gPins=gZoom.append("g");
 let zk=1,zt=d3.zoomIdentity;
@@ -1144,7 +1146,7 @@ function drawMap(){
   fitRegion();
   const agg=cityAgg();
   const onTopo=new Set([...agg.values()].map(c=>COUNTRY_TOPO[CITY[c.name][1]]).filter(Boolean));
-  gLand.selectAll("path").data(countries).join("path").attr("class",d=>"country"+(onTopo.has(d.properties.name)?" on":"")).attr("d",path);
+  gLand.selectAll("path").data([LAND]).join("path").attr("class","country").attr("d",path);
   const r=d3.scaleSqrt().domain([1,40]).range(region==="world"?(NARROW()?[4,12]:[3.5,13]):[5,18]);
   const pts=[...agg.values()].map(c=>{const [x,y]=projection([CITY[c.name][3],CITY[c.name][2]]);return {...c,x,y}})
     .filter(p=>p.x>-20&&p.x<W+20&&p.y>-20&&p.y<H+20).sort((a,b)=>b.shows.length-a.shows.length);
@@ -1861,7 +1863,7 @@ async function makeCard(){
     proj=d3.geoMercator().fitExtent([[mx+30,my+30],[mx+mw-30,my+mh-30]],{type:"MultiPoint",coordinates:[[cxl-hl,cyl-hb],[cxl+hl,cyl+hb]]})}
   const pth=d3.geoPath(proj,x);
   const on=new Set([...st.ctry].map(k=>COUNTRY_TOPO[k]).filter(Boolean));
-  countries.forEach(f=>{x.beginPath();pth(f);x.fillStyle=on.has(f.properties.name)?"rgba(255,163,139,.38)":"rgba(251,239,230,.14)";x.fill();x.strokeStyle="rgba(58,13,32,.7)";x.lineWidth=1;x.stroke()});
+  x.beginPath();pth(LAND);x.fillStyle="rgba(251,239,230,.16)";x.fill();
   const byCity=new Map();st.sh.forEach(s=>byCity.set(s.city,(byCity.get(s.city)||0)+1));
   const placed=[];
   [...byCity.entries()].sort((a,b)=>b[1]-a[1]).forEach(([n,k])=>{const [px,py]=proj([CITY[n][3],CITY[n][2]]);const r=9+Math.sqrt(k)*5;
